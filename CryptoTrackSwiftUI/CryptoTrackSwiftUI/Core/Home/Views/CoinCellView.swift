@@ -6,30 +6,33 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CoinCellView: View {
+
+    let cryptoCurrency : CryptoCurrency
+    
     var body: some View {
         HStack{
             // market rank
-            Text("X.")
+            Text("\(cryptoCurrency.marketCapRank)")
                 .font(.caption)
                 .foregroundColor(.gray)
             
             // image
-            Image(systemName: "bitcoinsign.circle.fill")
+            KFImage(URL(string: cryptoCurrency.image))
                 .resizable()
                 .scaledToFit()
                 .frame(width: 32, height: 32)
-                .foregroundColor(.orange)
                 
             // name
             VStack(alignment: .leading, spacing: 4){
-                Text("Bitcoin")
+                Text(cryptoCurrency.name)
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .padding(.leading, 4)
                 
-                Text("BTC")
+                Text(cryptoCurrency.symbol.uppercased())
                     .font(.caption)
                     .padding(.leading, 6)
                     .foregroundColor(.gray)
@@ -42,12 +45,12 @@ struct CoinCellView: View {
             
             // last price
             VStack(alignment: .leading, spacing: 4){
-                Text("20.123,45")
+                Text(cryptoCurrency.currentPrice.toUSDCurrency())
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                    .foregroundColor(.green)
+                    .foregroundColor(cryptoCurrency.priceChangePercentage24H.toPercentColor())
                 
-                Text("$20.123.450")
+                Text(cryptoCurrency.currentPrice.toUSDCurrency(minDigit: 2, maxDigit: 4))
                     .font(.caption)
                     .foregroundColor(.gray)
             }
@@ -58,23 +61,25 @@ struct CoinCellView: View {
             
             // 24h Change
             VStack{
-                Text("+%7,29")
+                Text(cryptoCurrency.priceChangePercentage24H.toPercentString())
                     .font(.caption)
                     .fontWeight(.semibold)
                     .padding(.leading, 4)
                     .foregroundColor(.white)
             }
             .padding(.all, 10)
-            .background(.green)
+            .background(cryptoCurrency.priceChangePercentage24H.toPercentColor())
             .cornerRadius(4)
         }
         .padding(.horizontal)
         .padding(.vertical , 4)
+        .background(Color("ItemBackgroundColor"))
+
     }
 }
 
-struct CoinCellView_Previews: PreviewProvider {
+/*struct CoinCellView_Previews: PreviewProvider {
     static var previews: some View {
         CoinCellView()
     }
-}
+}*/
