@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AF52C51628D1F6E200FC7A1A /* CryptoTrackSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52C51528D1F6E200FC7A1A /* CryptoTrackSwiftUIApp.swift */; };
+		AF52C51828D1F6E200FC7A1A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52C51728D1F6E200FC7A1A /* ContentView.swift */; };
+		AF52C51A28D1F6E500FC7A1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF52C51928D1F6E500FC7A1A /* Assets.xcassets */; };
+		AF52C51D28D1F6E500FC7A1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF52C51C28D1F6E500FC7A1A /* Preview Assets.xcassets */; };
+		AF52C52E28D1F9A300FC7A1A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52C52D28D1F9A300FC7A1A /* HomeView.swift */; };
+		AF52C53028D1FB1D00FC7A1A /* TopMoversView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52C52F28D1FB1D00FC7A1A /* TopMoversView.swift */; };
+		AF52C53228D1FB3200FC7A1A /* TopMoversItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52C53128D1FB3200FC7A1A /* TopMoversItemView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AF52C51228D1F6E200FC7A1A /* CryptoTrackSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoTrackSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF52C51528D1F6E200FC7A1A /* CryptoTrackSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTrackSwiftUIApp.swift; sourceTree = "<group>"; };
+		AF52C51728D1F6E200FC7A1A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AF52C51928D1F6E500FC7A1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF52C51C28D1F6E500FC7A1A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AF52C52D28D1F9A300FC7A1A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		AF52C52F28D1FB1D00FC7A1A /* TopMoversView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMoversView.swift; sourceTree = "<group>"; };
+		AF52C53128D1FB3200FC7A1A /* TopMoversItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMoversItemView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AF52C50F28D1F6E200FC7A1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AF52C50928D1F6E200FC7A1A = {
+			isa = PBXGroup;
+			children = (
+				AF52C51428D1F6E200FC7A1A /* CryptoTrackSwiftUI */,
+				AF52C51328D1F6E200FC7A1A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AF52C51328D1F6E200FC7A1A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF52C51228D1F6E200FC7A1A /* CryptoTrackSwiftUI.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AF52C51428D1F6E200FC7A1A /* CryptoTrackSwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				AF52C52728D1F84600FC7A1A /* Utils */,
+				AF52C52628D1F84200FC7A1A /* Extensions */,
+				AF52C52528D1F83F00FC7A1A /* Models */,
+				AF52C52428D1F83000FC7A1A /* Core */,
+				AF52C52328D1F82900FC7A1A /* App */,
+				AF52C51728D1F6E200FC7A1A /* ContentView.swift */,
+				AF52C51928D1F6E500FC7A1A /* Assets.xcassets */,
+				AF52C51B28D1F6E500FC7A1A /* Preview Content */,
+			);
+			path = CryptoTrackSwiftUI;
+			sourceTree = "<group>";
+		};
+		AF52C51B28D1F6E500FC7A1A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AF52C51C28D1F6E500FC7A1A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AF52C52328D1F82900FC7A1A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AF52C51528D1F6E200FC7A1A /* CryptoTrackSwiftUIApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AF52C52428D1F83000FC7A1A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AF52C52828D1F8B700FC7A1A /* Home */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		AF52C52528D1F83F00FC7A1A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AF52C52628D1F84200FC7A1A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AF52C52728D1F84600FC7A1A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AF52C52828D1F8B700FC7A1A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AF52C52928D1F8D600FC7A1A /* Views */,
+				AF52C52A28D1F8E300FC7A1A /* ViewModels */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AF52C52928D1F8D600FC7A1A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AF52C52D28D1F9A300FC7A1A /* HomeView.swift */,
+				AF52C52F28D1FB1D00FC7A1A /* TopMoversView.swift */,
+				AF52C53128D1FB3200FC7A1A /* TopMoversItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AF52C52A28D1F8E300FC7A1A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF52C51128D1F6E200FC7A1A /* CryptoTrackSwiftUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF52C52028D1F6E500FC7A1A /* Build configuration list for PBXNativeTarget "CryptoTrackSwiftUI" */;
+			buildPhases = (
+				AF52C50E28D1F6E200FC7A1A /* Sources */,
+				AF52C50F28D1F6E200FC7A1A /* Frameworks */,
+				AF52C51028D1F6E200FC7A1A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CryptoTrackSwiftUI;
+			productName = CryptoTrackSwiftUI;
+			productReference = AF52C51228D1F6E200FC7A1A /* CryptoTrackSwiftUI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AF52C50A28D1F6E200FC7A1A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					AF52C51128D1F6E200FC7A1A = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = AF52C50D28D1F6E200FC7A1A /* Build configuration list for PBXProject "CryptoTrackSwiftUI" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AF52C50928D1F6E200FC7A1A;
+			productRefGroup = AF52C51328D1F6E200FC7A1A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF52C51128D1F6E200FC7A1A /* CryptoTrackSwiftUI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AF52C51028D1F6E200FC7A1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF52C51D28D1F6E500FC7A1A /* Preview Assets.xcassets in Resources */,
+				AF52C51A28D1F6E500FC7A1A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AF52C50E28D1F6E200FC7A1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF52C53028D1FB1D00FC7A1A /* TopMoversView.swift in Sources */,
+				AF52C52E28D1F9A300FC7A1A /* HomeView.swift in Sources */,
+				AF52C51828D1F6E200FC7A1A /* ContentView.swift in Sources */,
+				AF52C51628D1F6E200FC7A1A /* CryptoTrackSwiftUIApp.swift in Sources */,
+				AF52C53228D1FB3200FC7A1A /* TopMoversItemView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AF52C51E28D1F6E500FC7A1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AF52C51F28D1F6E500FC7A1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AF52C52128D1F6E500FC7A1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CryptoTrackSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = SHP38F3EM7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = barisozgen.CryptoTrackSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AF52C52228D1F6E500FC7A1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CryptoTrackSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = SHP38F3EM7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = barisozgen.CryptoTrackSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AF52C50D28D1F6E200FC7A1A /* Build configuration list for PBXProject "CryptoTrackSwiftUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF52C51E28D1F6E500FC7A1A /* Debug */,
+				AF52C51F28D1F6E500FC7A1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF52C52028D1F6E500FC7A1A /* Build configuration list for PBXNativeTarget "CryptoTrackSwiftUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF52C52128D1F6E500FC7A1A /* Debug */,
+				AF52C52228D1F6E500FC7A1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AF52C50A28D1F6E200FC7A1A /* Project object */;
+}
