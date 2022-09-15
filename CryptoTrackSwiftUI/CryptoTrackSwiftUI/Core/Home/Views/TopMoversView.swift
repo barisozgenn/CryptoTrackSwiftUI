@@ -8,7 +8,7 @@
 import SwiftUI
 struct TopMoversView: View {
     @StateObject var viewModel = HomeViewModel()
-
+    
     var body: some View {
         VStack(alignment: .leading){
             Text("Top Gainers")
@@ -18,7 +18,13 @@ struct TopMoversView: View {
             ScrollView(.horizontal){
                 HStack(spacing:8){
                     ForEach(viewModel.topCryptoCurrencies){cryptoCurrency in
+                        NavigationLink{
+                            CoinDetailView()
+                        }
+                    label:{
                         TopMoversItemView(cryptoCurrency: cryptoCurrency)
+                    }
+                        
                     }
                 }
             }

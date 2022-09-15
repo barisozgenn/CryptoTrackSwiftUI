@@ -26,7 +26,8 @@ struct TopMoversItemView: View {
                 Text(cryptoCurrency.symbol.uppercased())
                     .font(.caption)
                     .fontWeight(.bold)
-                
+                    .foregroundColor(Color.theme.primaryTextColor)
+
                 Text(cryptoCurrency.currentPrice.toUSDCurrency())
                     .font(.caption)
                     .foregroundColor(.gray)
@@ -39,7 +40,7 @@ struct TopMoversItemView: View {
                 .foregroundColor(cryptoCurrency.priceChangePercentage24H.toPercentColor())
         }
         .frame(width: 150, height: 150)
-        .background(Color("ItemBackgroundColor"))
+        .background(Color.theme.itemBackgroundColor)
         .overlay(
             RoundedRectangle(cornerRadius:14)
                 .stroke(Color(.systemGray5), lineWidth: 2)

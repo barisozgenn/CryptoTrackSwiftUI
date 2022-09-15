@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AllCoinsView: View {
     @StateObject var viewModel = HomeViewModel()
-
+    
     var body: some View {
         VStack(alignment: .leading){
             
@@ -19,7 +19,7 @@ struct AllCoinsView: View {
                 .fontWeight(.bold)
                 .padding(.bottom)
                 .padding(.leading)
-        
+            
             // table titles
             HStack{
                 HStack{
@@ -31,7 +31,7 @@ struct AllCoinsView: View {
                 Spacer()
                 Spacer()
                 Spacer()
-               
+                
                 
                 HStack{
                     Text("Price")
@@ -54,7 +54,13 @@ struct AllCoinsView: View {
             ScrollView{
                 VStack{
                     ForEach(viewModel.cryptoCurrencies){cryptoCurrency in
+                        NavigationLink{
+                            CoinDetailView()
+                        }
+                    label:{
                         CoinCellView(cryptoCurrency: cryptoCurrency)
+                    }
+                        
                     }
                 }
             }
@@ -63,7 +69,7 @@ struct AllCoinsView: View {
 }
 
 /*struct AllCoinsView_Previews: PreviewProvider {
-    static var previews: some View {
-        AllCoinsView()
-    }
-}*/
+ static var previews: some View {
+ AllCoinsView()
+ }
+ }*/

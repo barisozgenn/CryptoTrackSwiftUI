@@ -36,6 +36,6 @@ extension Double {
     }
     
     func toPercentColor() -> Color {
-        return self >= 0 ? .green : .red
+        return self >= 0 ? Color.theme.currencyGreenColor : Color.theme.currencyRedColor
     }
 }

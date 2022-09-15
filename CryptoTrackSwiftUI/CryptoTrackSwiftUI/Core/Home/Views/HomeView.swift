@@ -24,7 +24,7 @@ struct HomeView: View {
                 
             }
             .navigationTitle("Live Datas")
-            .background(Color("AppBackgroundColor"))
+            .background(Color.theme.appBackgroundColor)
 
         }
     }

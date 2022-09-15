@@ -30,6 +30,7 @@ struct CoinCellView: View {
                 Text(cryptoCurrency.name)
                     .font(.subheadline)
                     .fontWeight(.semibold)
+                    .foregroundColor(Color.theme.primaryTextColor)
                     .padding(.leading, 4)
                 
                 Text(cryptoCurrency.symbol.uppercased())
@@ -73,7 +74,7 @@ struct CoinCellView: View {
         }
         .padding(.horizontal)
         .padding(.vertical , 4)
-        .background(Color("ItemBackgroundColor"))
+        .background(Color.theme.itemBackgroundColor)
 
     }
 }
