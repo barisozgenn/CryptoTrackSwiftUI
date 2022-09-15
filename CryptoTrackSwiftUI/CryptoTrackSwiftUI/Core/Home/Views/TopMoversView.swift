@@ -19,7 +19,7 @@ struct TopMoversView: View {
                 HStack(spacing:8){
                     ForEach(viewModel.topCryptoCurrencies){cryptoCurrency in
                         NavigationLink{
-                            CoinDetailView()
+                            CoinDetailView(cryptoCurrency: cryptoCurrency)
                         }
                     label:{
                         TopMoversItemView(cryptoCurrency: cryptoCurrency)

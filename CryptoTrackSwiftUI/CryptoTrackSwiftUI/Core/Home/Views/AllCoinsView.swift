@@ -55,7 +55,7 @@ struct AllCoinsView: View {
                 VStack{
                     ForEach(viewModel.cryptoCurrencies){cryptoCurrency in
                         NavigationLink{
-                            CoinDetailView()
+                            CoinDetailView(cryptoCurrency: cryptoCurrency)
                         }
                     label:{
                         CoinCellView(cryptoCurrency: cryptoCurrency)

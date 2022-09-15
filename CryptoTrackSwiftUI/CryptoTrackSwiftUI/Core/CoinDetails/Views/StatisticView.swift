@@ -21,14 +21,14 @@ struct StatisticView: View {
             if let percentChange = model.percentageChange {
                 
                 HStack(spacing: 4){
-                    Image(systemName: "triangle.fill")
+                    Image(systemName: percentChange.getImageArrowSystemName())
                         .font(.caption)
                     
                     Text(percentChange.toPercentString())
                         .font(.caption)
                         .bold()
                 }
-                .foregroundColor(Color.theme.currencyGreenColor)
+                .foregroundColor(percentChange.toPercentColor())
             }
            
         }
@@ -37,6 +37,6 @@ struct StatisticView: View {
 
 struct StatisticView_Previews: PreviewProvider {
     static var previews: some View {
-        StatisticView(model: dev.stat1x1)
+        StatisticView(model: dev.stat0x1)
     }
 }

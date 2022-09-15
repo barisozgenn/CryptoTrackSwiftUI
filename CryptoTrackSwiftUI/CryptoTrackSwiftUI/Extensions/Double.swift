@@ -38,4 +38,7 @@ extension Double {
     func toPercentColor() -> Color {
         return self >= 0 ? Color.theme.currencyGreenColor : Color.theme.currencyRedColor
     }
+    func getImageArrowSystemName() -> String{
+        return self >= 0 ? "arrowtriangle.up.fill" : "arrowtriangle.down.fill"
+    }
 }
