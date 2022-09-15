@@ -9,7 +9,15 @@ import Foundation
 class CoinDetailViewModel {
     
     private let cryptoCurrency : CryptoCurrency
+    
+    // chart Config
     var chartData = [ChartData]()
+    var startChartDate = Date()
+    var endChartDate = Date()
+    var minChartPrice = 0.0
+    var maxChartPrice = 0.0
+    var xChartValues = [Date]()
+    var yChartValues = [Double]()
     
     var overviewSectionModel : CoinDetailSectionModel {
         
@@ -20,10 +28,10 @@ class CoinDetailViewModel {
                                        value: price,
                                        percentageChange: pricePercentChange)
         // market cap stats
-        let marketCap = cryptoCurrency.marketCap
+        let marketCap = cryptoCurrency.marketCap ?? 0
         let marketCapChange = cryptoCurrency.marketCapChangePercentage24H
         let marketCapStat = StatisticModel(title: "Market Capitalization",
-                                           value: "\(marketCap)",
+                                           value: marketCap.formattedWithAbbreviations(),
                                            percentageChange: marketCapChange)
         // rank stats
         let rank = cryptoCurrency.marketCapRank
@@ -32,9 +40,9 @@ class CoinDetailViewModel {
                                       percentageChange: nil)
         
         // volume stats
-        let volume = cryptoCurrency.totalVolume
+        let volume = cryptoCurrency.totalVolume ?? 0
         let volumeStat = StatisticModel(title: "Volume",
-                                        value: "\(volume)",
+                                        value: volume.formattedWithAbbreviations(),
                                         percentageChange: nil)
         
         return CoinDetailSectionModel(title: "Overview", stats: [priceStat, marketCapStat, rankStat, volumeStat] )
@@ -62,10 +70,10 @@ class CoinDetailViewModel {
                                              percentageChange: pricePercentChange24h)
         
         // 24H market cap change
-        let marketCapChange = (cryptoCurrency.marketCapChange24H ?? 0).toUSDCurrency()
+        let marketCapChange = (cryptoCurrency.marketCapChange24H ?? 0)
         let marketCapPercentChange = cryptoCurrency.marketCapChangePercentage24H ?? 0
         let marketCapChangeStat = StatisticModel(title: "24h Market Cap Change",
-                                                 value: marketCapChange,
+                                                 value: "$\(marketCapChange.formattedWithAbbreviations())",
                                                  percentageChange: marketCapPercentChange)
         
         return CoinDetailSectionModel(title: "Additional Detail", stats: [
@@ -83,14 +91,28 @@ class CoinDetailViewModel {
     
     func setChartData(){
         guard let priceDatas = cryptoCurrency.sparklineIn7D?.price else {return}
+        
+        let sortedPriceDatas = priceDatas.sorted()
+        let pieces5 : Int = sortedPriceDatas.count / 5
+        
         var index = 0
-        let lastUpdatedDate = Date(coinGeckoDateString: cryptoCurrency.lastUpdated ?? "")
+        
+        self.minChartPrice = priceDatas.min() ?? 0
+        self.maxChartPrice = priceDatas.max() ?? 0
+        
+        
+        self.endChartDate = Date(coinGeckoDateString: cryptoCurrency.lastUpdated ?? "")
+        self.startChartDate = endChartDate.addingTimeInterval(60 * 60 * 24 * -7)
+        
+        self.yChartValues = [minChartPrice, sortedPriceDatas[pieces5*1],sortedPriceDatas[pieces5*2],sortedPriceDatas[pieces5*3], maxChartPrice]
+        self.xChartValues = [startChartDate, endChartDate]
 
         for priceData in priceDatas.reversed() {
            
-            let date = lastUpdatedDate.addingTimeInterval(-1*60*60*Double(index))
+            let date = self.endChartDate.addingTimeInterval(-1*60*60*Double(index))
             
             let chartData = ChartData(date: date, value: priceData)
+            self.chartData.append(chartData)
             
             index += 1
         }

@@ -18,6 +18,9 @@ struct CoinDetailView: View {
         NavigationView {
             ScrollView {
                 // chart
+                ChartView(viewModel: viewModel)
+                    .frame(height:272)
+                    .padding(.vertical)
                 
                 // overview
                 CoinDetailSection(model: viewModel.overviewSectionModel)
@@ -27,9 +30,10 @@ struct CoinDetailView: View {
                 CoinDetailSection(model: viewModel.additionalDetailSectionModel)
                     .padding(.vertical)
             }
+            
+            .navigationTitle("Bitcoin")
+            .padding()
         }
-        .padding()
-        .navigationTitle("Bitcoin")
     }
 }
 
