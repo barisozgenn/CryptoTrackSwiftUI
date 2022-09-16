@@ -51,11 +51,11 @@ struct AllCoinsView: View {
             .foregroundColor(.gray)
             
             // table list
-            ScrollView{
+            ScrollView(showsIndicators: false){
                 VStack{
                     ForEach(viewModel.cryptoCurrencies){cryptoCurrency in
                         NavigationLink{
-                            CoinDetailView(cryptoCurrency: cryptoCurrency)
+                            LayzNavigationView(build: CoinDetailView(cryptoCurrency: cryptoCurrency))
                         }
                     label:{
                         CoinCellView(cryptoCurrency: cryptoCurrency)

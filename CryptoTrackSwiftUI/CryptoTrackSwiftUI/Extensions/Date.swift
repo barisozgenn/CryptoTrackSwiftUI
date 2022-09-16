@@ -16,4 +16,14 @@ extension Date {
         let date = formetter.date(from: coinGeckoDateString) ?? Date()
         self.init(timeInterval: 0, since: date)
     }
+    
+    private var shortDateFormatter : DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd"
+        return formatter
+    }
+    
+    func asShortDateString() -> String {
+        return shortDateFormatter.string(from: self)
+    }
 }

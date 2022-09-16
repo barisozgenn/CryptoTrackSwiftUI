@@ -15,11 +15,11 @@ struct TopMoversView: View {
                 .font(.title2)
                 .fontWeight(.bold)
             
-            ScrollView(.horizontal){
+            ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing:8){
                     ForEach(viewModel.topCryptoCurrencies){cryptoCurrency in
                         NavigationLink{
-                            CoinDetailView(cryptoCurrency: cryptoCurrency)
+                            LayzNavigationView(build: CoinDetailView(cryptoCurrency: cryptoCurrency))
                         }
                     label:{
                         TopMoversItemView(cryptoCurrency: cryptoCurrency)

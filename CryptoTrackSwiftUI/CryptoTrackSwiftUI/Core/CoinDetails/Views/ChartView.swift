@@ -21,6 +21,7 @@ struct ChartView: View {
                             y:.value("Price", item.value)
                         )
                         .interpolationMethod(.cardinal)
+                        .foregroundStyle(viewModel.chartGraphicLineColor)
                     }
                 }
                 .chartXScale(domain: ClosedRange(uncheckedBounds:
@@ -30,7 +31,15 @@ struct ChartView: View {
                     AxisMarks(
                         position: .bottom,
                         values: viewModel.xChartValues
-                    )
+                    ){value in
+                        AxisGridLine()
+
+                        AxisValueLabel(){
+                            if let dateValue = value.as(Date.self){
+                                Text(dateValue.asShortDateString())
+                            }
+                        }
+                    }
                 }
                 .chartYScale(domain: ClosedRange(uncheckedBounds:
                                                     (lower: viewModel.minChartPrice,
@@ -39,7 +48,15 @@ struct ChartView: View {
                     AxisMarks(
                         position: .leading,
                         values: viewModel.yChartValues
-                    )
+                    ){value in
+                        AxisGridLine()
+
+                        AxisValueLabel(){
+                            if let doubleValue = value.as(Double.self){
+                                Text(doubleValue.formattedWithAbbreviations())
+                            }
+                        }
+                    }
                 }
             }
             

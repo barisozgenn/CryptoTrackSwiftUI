@@ -17,5 +17,11 @@ struct ColorTheme{
     let appBackgroundColor = Color("AppBackgroundColor")
     let currencyGreenColor = Color("CurrencyGreenColor")
     let currencyRedColor = Color("CurrencyRedColor")
+    
+    func getChartGraphicLineColor(firstValue:Double, lastValue:Double) -> Color {
+        return lastValue >= firstValue ? Color.theme.currencyGreenColor : Color.theme.currencyRedColor
+    }
 
 }
+
+

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 class CoinDetailViewModel {
     
     private let cryptoCurrency : CryptoCurrency
@@ -19,6 +20,15 @@ class CoinDetailViewModel {
     var xChartValues = [Date]()
     var yChartValues = [Double]()
     
+    var chartGraphicLineColor : Color {
+        return Color.theme.getChartGraphicLineColor(
+            firstValue: cryptoCurrency.sparklineIn7D?.price.first ?? 0 ,
+            lastValue: cryptoCurrency.sparklineIn7D?.price.last ?? 0)
+    }
+    
+    var currencyName: String{
+        return cryptoCurrency.name
+    }
     var overviewSectionModel : CoinDetailSectionModel {
         
         // price stats
@@ -87,6 +97,8 @@ class CoinDetailViewModel {
     init(cryptoCurrency: CryptoCurrency){
         self.cryptoCurrency = cryptoCurrency
         setChartData()
+        
+        print("DEBUG: CryptoCurrency is \(self.currencyName)")
     }
     
     func setChartData(){
@@ -99,7 +111,6 @@ class CoinDetailViewModel {
         
         self.minChartPrice = priceDatas.min() ?? 0
         self.maxChartPrice = priceDatas.max() ?? 0
-        
         
         self.endChartDate = Date(coinGeckoDateString: cryptoCurrency.lastUpdated ?? "")
         self.startChartDate = endChartDate.addingTimeInterval(60 * 60 * 24 * -7)

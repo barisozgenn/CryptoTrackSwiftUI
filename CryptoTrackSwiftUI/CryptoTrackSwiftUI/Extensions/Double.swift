@@ -35,8 +35,8 @@ extension Double {
         return "\(self >= 0 ? "+":"-" )%"+(percentageFormatter.string(for: self) ?? "0.00").replacingOccurrences(of: "-", with: "")
     }
     
-    func asNumberString() -> String{
-        return String(format: "%.2f", self)
+    func asNumberString(digit: Int = 2) -> String{
+        return String(format: "%.\(digit)f", self)
     }
     
     func toPercentColor() -> Color {
@@ -65,10 +65,12 @@ extension Double {
             return "\(sign)\(stringFormatted)M"
         case 1_000...:
             let formatted = number / 1_000
-            let stringFormatted = formatted.asNumberString()
+            let stringFormatted = formatted.asNumberString(digit: 3)
             return "\(sign)\(stringFormatted)K"
+        case 1...:
+            return self.asNumberString(digit: 3)
         case 0...:
-            return self.asNumberString()
+            return self.asNumberString(digit: 6)
             
         default:
             return "\(sign)\(self)"

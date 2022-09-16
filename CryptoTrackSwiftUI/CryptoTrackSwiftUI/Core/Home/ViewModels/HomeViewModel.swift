@@ -8,10 +8,11 @@
 import Foundation
 
 class HomeViewModel: ObservableObject {
-
+    
     @Published var cryptoCurrencies = [CryptoCurrency]()
     @Published var topCryptoCurrencies = [CryptoCurrency]()
-
+    @Published var isLoading = true
+    
     init(){
         fetchMarketData()
     }
@@ -25,6 +26,7 @@ class HomeViewModel: ObservableObject {
         URLSession.shared.dataTask(with: url){data, response, error in
             if let error = error {
                 print("DEBUG: Error \(error.localizedDescription)")
+                self.isLoading = false
                 return
             }
             
@@ -40,15 +42,17 @@ class HomeViewModel: ObservableObject {
             do {
                 let cryptoCurrencies = try JSONDecoder().decode([CryptoCurrency].self, from: data)
                 //print("DEBUG: Crypto Currencies \(cryptoCurrencies)")
-               
+                
                 DispatchQueue.main.async {
                     self.cryptoCurrencies = cryptoCurrencies
                     self.sortTopMovingCryptoCurrencies()
+                    self.isLoading = false
                 }
             }catch let error {
                 print("DEBUG: Crypto Currencies Data is failed to decode with error: \(error)")
+                self.isLoading = false
             }
-
+            
         }.resume()
     }
     
