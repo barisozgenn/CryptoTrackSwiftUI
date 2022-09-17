@@ -10,6 +10,8 @@
 		AF3B9E4D28D372E700006195 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = AF3B9E4C28D372E700006195 /* Algorithms */; };
 		AF3B9E4F28D456E700006195 /* CustomLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3B9E4E28D456E700006195 /* CustomLoadingIndicator.swift */; };
 		AF3B9E5128D45B8400006195 /* LayzNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3B9E5028D45B8400006195 /* LayzNavigationView.swift */; };
+		AF3B9E5828D5C94300006195 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3B9E5728D5C94300006195 /* LaunchScreenView.swift */; };
+		AF3B9E5B28D5CCD700006195 /* LaunchScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3B9E5A28D5CCD700006195 /* LaunchScreenViewModel.swift */; };
 		AF52C51628D1F6E200FC7A1A /* CryptoTrackSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52C51528D1F6E200FC7A1A /* CryptoTrackSwiftUIApp.swift */; };
 		AF52C51828D1F6E200FC7A1A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52C51728D1F6E200FC7A1A /* ContentView.swift */; };
 		AF52C51A28D1F6E500FC7A1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF52C51928D1F6E500FC7A1A /* Assets.xcassets */; };
@@ -39,6 +41,9 @@
 /* Begin PBXFileReference section */
 		AF3B9E4E28D456E700006195 /* CustomLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingIndicator.swift; sourceTree = "<group>"; };
 		AF3B9E5028D45B8400006195 /* LayzNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayzNavigationView.swift; sourceTree = "<group>"; };
+		AF3B9E5428D5C6BB00006195 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AF3B9E5728D5C94300006195 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		AF3B9E5A28D5CCD700006195 /* LaunchScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewModel.swift; sourceTree = "<group>"; };
 		AF52C51228D1F6E200FC7A1A /* CryptoTrackSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoTrackSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF52C51528D1F6E200FC7A1A /* CryptoTrackSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTrackSwiftUIApp.swift; sourceTree = "<group>"; };
 		AF52C51728D1F6E200FC7A1A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,6 +83,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF3B9E5528D5C92400006195 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				AF3B9E5628D5C92D00006195 /* Views */,
+				AF3B9E5928D5CCB600006195 /* ViewModels */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		AF3B9E5628D5C92D00006195 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AF3B9E5728D5C94300006195 /* LaunchScreenView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AF3B9E5928D5CCB600006195 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AF3B9E5A28D5CCD700006195 /* LaunchScreenViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		AF52C50928D1F6E200FC7A1A = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +128,7 @@
 		AF52C51428D1F6E200FC7A1A /* CryptoTrackSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				AF3B9E5428D5C6BB00006195 /* Info.plist */,
 				AF52C52728D1F84600FC7A1A /* Utils */,
 				AF52C52628D1F84200FC7A1A /* Extensions */,
 				AF52C52528D1F83F00FC7A1A /* Models */,
@@ -129,6 +160,7 @@
 		AF52C52428D1F83000FC7A1A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				AF3B9E5528D5C92400006195 /* Launch */,
 				AF52C54228D24C7B00FC7A1A /* CoinDetails */,
 				AF52C52828D1F8B700FC7A1A /* Home */,
 			);
@@ -326,11 +358,13 @@
 				AF3B9E4F28D456E700006195 /* CustomLoadingIndicator.swift in Sources */,
 				AF3B9E5128D45B8400006195 /* LayzNavigationView.swift in Sources */,
 				AF52C54F28D30F4B00FC7A1A /* StatisticModel.swift in Sources */,
+				AF3B9E5B28D5CCD700006195 /* LaunchScreenViewModel.swift in Sources */,
 				AF52C53628D20EEA00FC7A1A /* CoinCellView.swift in Sources */,
 				AF52C55D28D32CB500FC7A1A /* ChartView.swift in Sources */,
 				AF52C51628D1F6E200FC7A1A /* CryptoTrackSwiftUIApp.swift in Sources */,
 				AF52C53F28D23AA100FC7A1A /* Double.swift in Sources */,
 				AF52C53228D1FB3200FC7A1A /* TopMoversItemView.swift in Sources */,
+				AF3B9E5828D5C94300006195 /* LaunchScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,9 +496,9 @@
 				DEVELOPMENT_TEAM = SHP38F3EM7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CryptoTrackSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -491,9 +525,9 @@
 				DEVELOPMENT_TEAM = SHP38F3EM7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CryptoTrackSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

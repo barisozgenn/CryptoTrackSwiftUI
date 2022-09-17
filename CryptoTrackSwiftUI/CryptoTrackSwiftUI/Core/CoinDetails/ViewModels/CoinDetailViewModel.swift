@@ -29,6 +29,10 @@ class CoinDetailViewModel {
     var currencyName: String{
         return cryptoCurrency.name
     }
+    var currencyImage: String{
+        return cryptoCurrency.image
+    }
+    
     var overviewSectionModel : CoinDetailSectionModel {
         
         // price stats

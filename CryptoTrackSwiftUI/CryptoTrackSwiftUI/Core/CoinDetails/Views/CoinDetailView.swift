@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CoinDetailView: View {
     let viewModel : CoinDetailViewModel
@@ -32,7 +33,18 @@ struct CoinDetailView: View {
                 .padding(.vertical)
         }
         .padding()
-        .navigationTitle(viewModel.currencyName)
+        .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigation) {
+                        HStack {
+                            KFImage(URL(string: viewModel.currencyImage))
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 32, height: 32)
+                            Text(viewModel.currencyName).font(.headline)
+                        }
+                    }
+                }
     }
 }
 

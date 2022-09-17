@@ -9,9 +9,21 @@ import SwiftUI
 
 @main
 struct CryptoTrackSwiftUIApp: App {
+    
+    @StateObject var launchScreenManager = LaunchScreenViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            ZStack{
+                HomeView()
+                
+                if launchScreenManager.state != .completed{
+                    LaunchScreenView()
+                }
+                
+            }
+            .environmentObject(launchScreenManager)
+            
         }
     }
 }

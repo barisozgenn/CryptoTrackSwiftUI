@@ -8,10 +8,11 @@
 import Foundation
 
 class HomeViewModel: ObservableObject {
-    
-    @Published var cryptoCurrencies = [CryptoCurrency]()
-    @Published var topCryptoCurrencies = [CryptoCurrency]()
+        
+    @Published private(set) var cryptoCurrencies = [CryptoCurrency]()
+    @Published private(set) var topCryptoCurrencies = [CryptoCurrency]()
     @Published var isLoading = true
+ 
     
     init(){
         fetchMarketData()
@@ -57,8 +58,17 @@ class HomeViewModel: ObservableObject {
     }
     
     func sortTopMovingCryptoCurrencies(){
-        let tops = cryptoCurrencies.sorted(by: {$0.priceChangePercentage24H > $1.priceChangePercentage24H})
-        
-        self.topCryptoCurrencies = Array(tops.prefix(5))
+        if cryptoCurrencies.count > 5 {
+            let tops = cryptoCurrencies.sorted(by: {$0.priceChangePercentage24H > $1.priceChangePercentage24H})
+            
+            self.topCryptoCurrencies = Array(tops.prefix(5))
+        }
+       
     }
+    
+    func refreshData(){
+        print("DEBUG: Refresh data triggered")
+        fetchMarketData()
+    }
+    
 }

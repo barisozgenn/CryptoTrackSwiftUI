@@ -55,6 +55,7 @@ struct AllCoinsView: View {
                 VStack{
                     ForEach(viewModel.cryptoCurrencies){cryptoCurrency in
                         NavigationLink{
+                           // LazyVStack search
                             LayzNavigationView(build: CoinDetailView(cryptoCurrency: cryptoCurrency))
                         }
                     label:{
@@ -64,6 +65,7 @@ struct AllCoinsView: View {
                     }
                 }
             }
+            
         }
     }
 }

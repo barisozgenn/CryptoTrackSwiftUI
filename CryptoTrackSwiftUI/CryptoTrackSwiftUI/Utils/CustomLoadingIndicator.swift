@@ -9,13 +9,27 @@ import SwiftUI
 
 struct CustomLoadingIndicator: View {
     var body: some View {
-       ProgressView()
-            .progressViewStyle(.circular)
-            .accentColor(.white)
-            .scaleEffect(x: 1.5, y:1.5, anchor: .center)
-            .frame(width: 92, height: 92)
-            .background(Color(.systemGray4))
-            .cornerRadius(14)
+        ZStack {
+            Color(white: 0, opacity: 0)
+            
+            Image(uiImage: UIImage(named: "logo-crypto-track")!)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 128, height: 128)
+            
+            ProgressView()
+                 .progressViewStyle(.circular)
+                 .accentColor(.white)
+                 .scaleEffect(x: 1.5, y:1.5, anchor: .center)
+                 .frame(width: 68, height: 68)
+                 .background(
+                     LinearGradient(
+                     colors: [.orange, .yellow],
+                     startPoint: .topLeading,
+                     endPoint: .bottomTrailing
+                 ))
+                 .cornerRadius(58)
+        }.background(ignoresSafeAreaEdges: .all)
     }
 }
 
