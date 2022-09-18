@@ -15,7 +15,7 @@ struct CryptoTrackSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack{
-                HomeView()
+                RootView()
                 
                 if launchScreenManager.state != .completed{
                     LaunchScreenView()

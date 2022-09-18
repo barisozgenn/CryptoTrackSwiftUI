@@ -27,7 +27,8 @@ struct HomeView: View {
                             .font(.headline)
                             .fontWeight(.heavy)
                             .foregroundColor(.orange)
-                            .offset(y: -70)
+                            .offset(y: -170)
+                        
                         // top movers view
                         TopMoversView(viewModel: viewModel)
                         
