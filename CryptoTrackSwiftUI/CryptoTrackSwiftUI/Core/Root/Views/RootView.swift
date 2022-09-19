@@ -13,19 +13,7 @@ struct RootView: View {
     
     var body: some View {
         TabView{
-            
-        }
-        .navigationBarTitleDisplayMode(.automatic)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                HStack {
-                    Image(uiImage: UIImage(named: "logo-crypto-track")!)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 32)
-                    Text("CryptoTrack").font(.headline)
-                }
-            }
+            MarketView()
         }
         .onAppear{
             DispatchQueue

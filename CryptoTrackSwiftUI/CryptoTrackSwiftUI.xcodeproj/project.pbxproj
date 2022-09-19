@@ -42,6 +42,7 @@
 		AF76CB5528D7614D000B4F94 /* CryptoCurrencyHorizontalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF76CB5428D7614D000B4F94 /* CryptoCurrencyHorizontalListView.swift */; };
 		AF76CB5728D761FA000B4F94 /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF76CB5628D761FA000B4F94 /* MarketView.swift */; };
 		AF76CB5C28D76383000B4F94 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF76CB5B28D76383000B4F94 /* RootView.swift */; };
+		AF76CB5E28D8444A000B4F94 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF76CB5D28D8444A000B4F94 /* NetworkManager.swift */; };
 		AF84E81728D36DFF00FEE55D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AF84E81628D36DFF00FEE55D /* Kingfisher */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		AF76CB5428D7614D000B4F94 /* CryptoCurrencyHorizontalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCurrencyHorizontalListView.swift; sourceTree = "<group>"; };
 		AF76CB5628D761FA000B4F94 /* MarketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
 		AF76CB5B28D76383000B4F94 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		AF76CB5D28D8444A000B4F94 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			children = (
 				AF3B9E4E28D456E700006195 /* CustomLoadingIndicator.swift */,
 				AF3B9E5028D45B8400006195 /* LayzNavigationView.swift */,
+				AF76CB5D28D8444A000B4F94 /* NetworkManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				AF76CB4D28D75E15000B4F94 /* CryptoCurrencyListView.swift in Sources */,
 				AF76CB5328D760C9000B4F94 /* CryptoCurrencyHorizontalCellView.swift in Sources */,
 				AF52C53A28D2303500FC7A1A /* CryptoCurrency.swift in Sources */,
+				AF76CB5E28D8444A000B4F94 /* NetworkManager.swift in Sources */,
 				AF52C55928D329D000FC7A1A /* Date.swift in Sources */,
 				AF52C55128D3101F00FC7A1A /* PreviewProvider.swift in Sources */,
 				AF52C51828D1F6E200FC7A1A /* ContentView.swift in Sources */,
