@@ -12,53 +12,54 @@ struct CryptoCurrencyCellView:View {
     
     let cryptoCurrency : CryptoCurrency
     
+    init(cryptoCurrency : CryptoCurrency){
+        self.cryptoCurrency = cryptoCurrency
+        print("Loading row \(cryptoCurrency.marketCapRank)")
+    }
     var body: some View {
         HStack{
-            // market rank
-            Text("\(cryptoCurrency.marketCapRank)")
-                .font(.caption)
-                .foregroundColor(.gray)
-            
-            // image
-            KFImage(URL(string: cryptoCurrency.image))
-                .resizable()
-                .scaledToFit()
-                .frame(width: 32, height: 32)
+            HStack{
+                // market rank
+                Text("\(cryptoCurrency.marketCapRank)")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    .frame(width: 25, alignment: .center)
                 
+                // image
+                CurrencyImageView(cryptoCurrency: cryptoCurrency)
+                    .scaledToFit()
+                    .frame(width: 32, height: 32)
+                
+            }
+            
             // name
-            VStack(alignment: .leading, spacing: 4){
+            VStack(alignment: .leading,spacing:0){
                 Text(cryptoCurrency.name)
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(Color.theme.primaryTextColor)
-                    .padding(.leading, 4)
+                    .frame(alignment: .leading)
                 
                 Text(cryptoCurrency.symbol.uppercased())
                     .font(.caption)
-                    .padding(.leading, 6)
                     .foregroundColor(.gray)
+                    .frame(alignment: .leading)
+                
             }
-            .padding(.leading,2)
-            
-            Spacer()
-            Spacer()
-            Spacer()
+            .frame(width: 120, alignment: .leading)
             
             // last price
-            VStack(alignment: .leading, spacing: 4){
+            VStack(alignment: .trailing, spacing: 1){
                 Text(cryptoCurrency.currentPrice.toUSDCurrency())
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(cryptoCurrency.priceChangePercentage24H.toPercentColor())
                 
-                Text(cryptoCurrency.currentPrice.toUSDCurrency(minDigit: 2, maxDigit: 4))
+                Text(cryptoCurrency.currentPrice.toUSDCurrency())
                     .font(.caption)
                     .foregroundColor(.gray)
             }
-            
-            
-            Spacer()
-            
+            .frame(width: 90,alignment: .trailing)
             
             // 24h Change
             VStack{
@@ -68,6 +69,7 @@ struct CryptoCurrencyCellView:View {
                     .padding(.leading, 4)
                     .foregroundColor(.white)
             }
+            .frame(width: 61)
             .padding(.all, 10)
             .background(cryptoCurrency.priceChangePercentage24H.toPercentColor())
             .cornerRadius(4)
@@ -75,7 +77,7 @@ struct CryptoCurrencyCellView:View {
         .padding(.horizontal)
         .padding(.vertical , 4)
         .background(Color.theme.itemBackgroundColor)
-
+        
     }
 }
 

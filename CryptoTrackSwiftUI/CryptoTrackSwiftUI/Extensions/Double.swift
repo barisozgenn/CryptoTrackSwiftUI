@@ -24,7 +24,34 @@ extension Double {
         return formatter
     }
     
-    func toUSDCurrency(minDigit: Int = 1, maxDigit: Int = 2) -> String {
+    func toUSDCurrency() -> String {
+        
+        var minDigit = 0
+        var maxDigit = 2
+        
+        let number = abs(Double(self))
+        
+        switch number {
+        case 10000...:
+            minDigit = 0
+            maxDigit = 0
+        case 1000...:
+            minDigit = 2
+            maxDigit = 4
+        case 10...:
+            minDigit = 3
+            maxDigit = 5
+        case 1...:
+            minDigit = 4
+            maxDigit = 6
+        case 0...:
+            minDigit = 6
+            maxDigit = 8
+            
+        default:
+            minDigit = 6
+            maxDigit = 8
+        }
         currencyPriceFormatter.minimumFractionDigits = minDigit
         currencyPriceFormatter.maximumFractionDigits = maxDigit
         

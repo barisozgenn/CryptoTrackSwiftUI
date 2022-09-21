@@ -13,7 +13,7 @@ struct MarketView: View {
     
     var body: some View {
         NavigationView{
-                ScrollView(.vertical, showsIndicators: false){
+                VStack{
 
                     VStack{
                         // arrow and indicator
@@ -30,18 +30,17 @@ struct MarketView: View {
                         
                         // all coins view
                         CryptoCurrencyListView(viewModel: viewModel)
+                            .frame(height: UIScreen.main.bounds.size.height-200)
                     }
                     
                     
                 }
-                
+              
+            
                 if viewModel.isLoading {
                     CustomLoadingIndicator()
                 }
                 
-            }
-            .refreshable {
-                viewModel.refreshData()
             }
             .background(Color.theme.appBackgroundColor)
             .navigationTitle("Live Datas")

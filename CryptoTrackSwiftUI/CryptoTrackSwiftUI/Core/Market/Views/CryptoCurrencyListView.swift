@@ -11,21 +11,17 @@ struct CryptoCurrencyListView: View {
     @StateObject var viewModel = MarketViewModel()
     
     var body: some View {
-        VStack(alignment: .leading){
-            
-            // page title
-            Text("Cryptocurrencies")
-                .font(.title2)
-                .fontWeight(.bold)
-                .padding(.bottom)
-                .padding(.leading)
+        VStack(){
+    
+            // search bar
+            SearchBarView(searchText: $viewModel.searchText)
             
             // table titles
             HStack{
                 HStack{
                     Text("#")
+                        .frame(width: 25, alignment: .center)
                 }
-                .padding(.leading, -3)
                 .onTapGesture {
                     viewModel.sortList(type: .rank)
                 }
@@ -34,16 +30,10 @@ struct CryptoCurrencyListView: View {
                     Text("Name")
                     Image(systemName: viewModel.btnNameImageDirection)
                 }
-                .padding(.leading, 45)
                 .onTapGesture {
                     viewModel.sortList(type: .name)
                 }
-                .foregroundColor(viewModel.isClickedBtnName ? .orange : .gray)
-                .fontWeight(viewModel.isClickedBtnName ? .bold : .regular)
-                
-                Spacer()
-                Spacer()
-                Spacer()
+                .withSortButtonViewModifier(frameWidth: 120, isClicked: viewModel.isClickedBtnName)
                 
                 
                 HStack{
@@ -53,10 +43,7 @@ struct CryptoCurrencyListView: View {
                 .onTapGesture {
                     viewModel.sortList(type: .price)
                 }
-                .foregroundColor(viewModel.isClickedBtnPrice ? .orange : .gray)
-                .fontWeight(viewModel.isClickedBtnPrice ? .bold : .regular)
-                
-                Spacer()
+                .withSortButtonViewModifier(frameWidth: 90, isClicked: viewModel.isClickedBtnPrice)
                 
                 
                 HStack{
@@ -66,29 +53,32 @@ struct CryptoCurrencyListView: View {
                 .onTapGesture {
                     viewModel.sortList(type: .percentage)
                 }
-                .foregroundColor(viewModel.isClickedBtnPercentage ? .orange : .gray)
-                .fontWeight(viewModel.isClickedBtnPercentage ? .bold : .regular)
+                .withSortButtonViewModifier(frameWidth: 80, isClicked: viewModel.isClickedBtnPercentage)
             }
-            .font(.caption)
-            .padding(.horizontal)
-            .foregroundColor(.gray)
-            
+           
             // table list
             ScrollView(showsIndicators: false){
-                VStack{
+                LazyVStack(spacing: 14){
+                    
                     ForEach(viewModel.cryptoCurrencies){cryptoCurrency in
+                        
                         NavigationLink{
-                            // LazyVStack search
                             LayzNavigationView(build: CoinDetailView(cryptoCurrency: cryptoCurrency))
+                            
                         }
                     label:{
+                        
                         CryptoCurrencyCellView(cryptoCurrency: cryptoCurrency)
+                        
+                      
                     }
                         
                     }
                 }
             }
-            
+            .refreshable {
+                viewModel.refreshData()
+            }
         }
     }
 }

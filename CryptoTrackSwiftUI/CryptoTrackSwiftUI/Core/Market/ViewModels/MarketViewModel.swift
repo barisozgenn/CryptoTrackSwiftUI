@@ -9,8 +9,7 @@ import Foundation
 import Combine
 class MarketViewModel:  ObservableObject {
     
-    private var dataSubscription : AnyCancellable?
-    
+   
     @Published private(set) var cryptoCurrencies = [CryptoCurrency]()
     @Published private(set) var topCryptoCurrencies = [CryptoCurrency]()
     @Published var isLoading = true
@@ -24,8 +23,13 @@ class MarketViewModel:  ObservableObject {
     @Published private(set) var isClickedBtnName = false
     @Published private(set) var isClickedBtnPrice = false
     @Published private(set) var isClickedBtnPercentage = false
+
+    @Published var searchText : String = ""
     
     private var lastSortType : ListSortType = .rankLow
+
+    private let dataService = CryptoCurrenciesService()
+    private var cancellables = Set<AnyCancellable>()
     
     init(){
         fetchData()
@@ -33,24 +37,43 @@ class MarketViewModel:  ObservableObject {
     }
     
     private func fetchData(){
-        let urlString = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=24h"
         
-        guard let url = URL(string: urlString) else {return}
-        
-        dataSubscription = NetworkManager.download(url: url)
-            .decode(type: [CryptoCurrency].self, decoder: JSONDecoder())
-            .sink(receiveCompletion: NetworkManager.handleCompletion ,
-                  receiveValue: {[weak self] (returnedResponse) in
-                
-                self?.cryptoCurrencies = returnedResponse
-                self?.sortTopMovingCryptoCurrencies()
-                self?.isLoading = false
-                
-                self?.dataSubscription?.cancel()
+        $searchText
+            .combineLatest(dataService.$cryptoCurrencies)
+            .debounce(for: .seconds(0.7), scheduler: DispatchQueue.main)
+            .map(searchCurrencies)
+            .sink{[weak self] (searchedCurrencies) in
                
-            })
+                self?.cryptoCurrencies = searchedCurrencies
+                self?.sortTopMovingCryptoCurrencies()
+
+                self?.isLoading = false
+
+            }
+            .store(in: &cancellables)
         
+
+    }
+    
+    private func searchCurrencies(text:String, searchCurrencies : [CryptoCurrency]) -> [CryptoCurrency]{
         
+        guard !text.isEmpty else {
+            return searchCurrencies
+        }
+        
+        let lowercasedText = text.lowercased()
+        
+        let filteredCurrencies = searchCurrencies.filter { (crypto) -> Bool in
+            let condition =
+            crypto.name.lowercased().contains(lowercasedText) ||
+            crypto.symbol.lowercased().contains(lowercasedText)
+            
+            return condition
+        }
+        
+        sortList(type: .name)
+        
+        return filteredCurrencies
     }
     
     func sortTopMovingCryptoCurrencies(){
@@ -184,48 +207,4 @@ class MarketViewModel:  ObservableObject {
 }
 
 
-/*
- 
- old api call
- 
- 
- 
- private func fetchMarketData(){
-     
-     let urlString = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=24h"
-     
-     guard let url = URL(string: urlString) else {return}
-     
-     URLSession.shared.dataTask(with: url){data, response, error in
-         if let error = error {
-             print("DEBUG: Error \(error.localizedDescription)")
-             self.isLoading = false
-             return
-         }
-         
-         if let response = response as? HTTPURLResponse {
-             print("DEBUG: Response Code \(response.statusCode)")
-         }
-         
-         guard let data = data else { return }
-         
-         //let dataAsString = String(data: data, encoding: .utf8)
-         //print("DEBUG: Data \(dataAsString!)")
-         
-         do {
-             let cryptoCurrencies = try JSONDecoder().decode([CryptoCurrency].self, from: data)
-             //print("DEBUG: Crypto Currencies \(cryptoCurrencies)")
-             
-             DispatchQueue.main.async {
-                 self.cryptoCurrencies = cryptoCurrencies
-                 self.sortTopMovingCryptoCurrencies()
-                 self.isLoading = false
-             }
-         }catch let error {
-             print("DEBUG: Crypto Currencies Data is failed to decode with error: \(error)")
-             self.isLoading = false
-         }
-         
-     }.resume()
- }
- */
+

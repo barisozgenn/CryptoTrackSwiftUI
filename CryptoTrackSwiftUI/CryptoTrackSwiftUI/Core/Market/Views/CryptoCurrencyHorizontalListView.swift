@@ -12,15 +12,31 @@ struct CryptoCurrencyHorizontalListView:  View {
     
     var body: some View {
         VStack(alignment: .leading){
-            Text("Top Gainers")
-                .font(.title2)
-                .fontWeight(.bold)
             
             ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing:8){
+                    HStack(spacing: 0){
+                        Text("TOP")
+                            .rotationEffect(.degrees(-90))
+                            .fontWeight(.bold)
+                            .foregroundColor(.gray)
+                            .font(.caption)
+                        Text("5")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(.gray)
+                            .padding(.trailing, 4)
+                    }
+                    .frame(height: 75)
+                        .background(Color.theme.itemBackgroundColor)
+                        .overlay(
+                            RoundedRectangle(cornerRadius:14)
+                                .stroke(Color(.systemGray5), lineWidth: 2)
+                        )
                     ForEach(viewModel.topCryptoCurrencies){cryptoCurrency in
                         NavigationLink{
                             LayzNavigationView(build: CoinDetailView(cryptoCurrency: cryptoCurrency))
+                            
                         }
                     label:{
                         CryptoCurrencyHorizontalCellView(cryptoCurrency: cryptoCurrency)
