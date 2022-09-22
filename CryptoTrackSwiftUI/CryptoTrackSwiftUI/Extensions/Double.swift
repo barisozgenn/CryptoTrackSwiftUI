@@ -13,6 +13,8 @@ extension Double {
     private var currencyPriceFormatter : NumberFormatter {
         let formatter = NumberFormatter()
         formatter.usesGroupingSeparator = true
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
         formatter.numberStyle = .currency
         return formatter
     }
@@ -26,36 +28,34 @@ extension Double {
     
     func toUSDCurrency() -> String {
         
-        var minDigit = 0
-        var maxDigit = 2
-        
-        let number = abs(Double(self))
-        
-        switch number {
-        case 10000...:
-            minDigit = 0
-            maxDigit = 0
-        case 1000...:
-            minDigit = 2
-            maxDigit = 4
-        case 10...:
-            minDigit = 3
-            maxDigit = 5
-        case 1...:
-            minDigit = 4
-            maxDigit = 6
-        case 0...:
-            minDigit = 6
-            maxDigit = 8
-            
-        default:
-            minDigit = 6
-            maxDigit = 8
+        let price = abs(Double(self))
+        var priceString = ""
+        if price > 1.0 {
+            priceString = currencyPriceFormatter.string(for: price) ?? "$0.00"
         }
-        currencyPriceFormatter.minimumFractionDigits = minDigit
-        currencyPriceFormatter.maximumFractionDigits = maxDigit
+        else {
+            var digit = 2
+            
+            if price > 0.1 { digit = 3}
+            else if price > 0.01 { digit = 3}
+            else if price > 0.001 { digit = 4}
+            else if price > 0.0001 { digit = 5}
+            else if price > 0.00001 { digit = 6}
+            else {digit = 10}
+            
+            priceString = "$" + price.asNumberString(digit: digit)
+        }
+        return priceString
+    }
+    func toUSDCurrencyFormatted() -> String {
+        var priceString =  self.toUSDCurrency()
         
-        return currencyPriceFormatter.string(for: self) ?? "$0.00"
+        while (priceString.last == "0"){
+          priceString = String(priceString.dropLast())
+        }
+        if priceString.last == "." {priceString =  String(priceString.dropLast())}
+        
+        return priceString
     }
     
     func toPercentString() -> String {

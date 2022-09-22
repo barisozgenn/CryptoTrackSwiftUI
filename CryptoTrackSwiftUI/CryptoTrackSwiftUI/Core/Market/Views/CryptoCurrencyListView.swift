@@ -17,44 +17,7 @@ struct CryptoCurrencyListView: View {
             SearchBarView(searchText: $viewModel.searchText)
             
             // table titles
-            HStack{
-                HStack{
-                    Text("#")
-                        .frame(width: 25, alignment: .center)
-                }
-                .onTapGesture {
-                    viewModel.sortList(type: .rank)
-                }
-                
-                HStack{
-                    Text("Name")
-                    Image(systemName: viewModel.btnNameImageDirection)
-                }
-                .onTapGesture {
-                    viewModel.sortList(type: .name)
-                }
-                .withSortButtonViewModifier(frameWidth: 120, isClicked: viewModel.isClickedBtnName)
-                
-                
-                HStack{
-                    Text("Price")
-                    Image(systemName: viewModel.btnPriceImageDirection)
-                }
-                .onTapGesture {
-                    viewModel.sortList(type: .price)
-                }
-                .withSortButtonViewModifier(frameWidth: 90, isClicked: viewModel.isClickedBtnPrice)
-                
-                
-                HStack{
-                    Text("24h %")
-                    Image(systemName: viewModel.btnPercentageImageDirection)
-                }
-                .onTapGesture {
-                    viewModel.sortList(type: .percentage)
-                }
-                .withSortButtonViewModifier(frameWidth: 80, isClicked: viewModel.isClickedBtnPercentage)
-            }
+            CurrenciesTableTitleView(viewModel: viewModel)
            
             // table list
             ScrollView(showsIndicators: false){

@@ -18,24 +18,29 @@ struct CryptoCurrencyCellView:View {
     }
     var body: some View {
         HStack{
+            // market rank & image
             HStack{
                 // market rank
                 Text("\(cryptoCurrency.marketCapRank)")
-                    .font(.caption)
+                    .font(.system(size: 10))
+                    .fontWeight(.semibold)
                     .foregroundColor(.gray)
-                    .frame(width: 25, alignment: .center)
+                    .frame(width: 20, alignment: .trailing)
+                
                 
                 // image
                 CurrencyImageView(cryptoCurrency: cryptoCurrency)
                     .scaledToFit()
                     .frame(width: 32, height: 32)
+                    .padding(.leading, -4)
                 
             }
+            .frame(alignment: .leading)
             
-            // name
+            // name & symbol
             VStack(alignment: .leading,spacing:0){
                 Text(cryptoCurrency.name)
-                    .font(.subheadline)
+                    .font(.system(size: 14))
                     .fontWeight(.semibold)
                     .foregroundColor(Color.theme.primaryTextColor)
                     .frame(alignment: .leading)
@@ -48,36 +53,45 @@ struct CryptoCurrencyCellView:View {
             }
             .frame(width: 120, alignment: .leading)
             
+            Spacer()
+                .frame(
+                    minWidth: 0,
+                    maxWidth: .infinity,
+                    minHeight: 0,
+                    maxHeight: 50)
+            
             // last price
             VStack(alignment: .trailing, spacing: 1){
-                Text(cryptoCurrency.currentPrice.toUSDCurrency())
-                    .font(.subheadline)
+                Text(cryptoCurrency.currentPrice.toUSDCurrencyFormatted())
+                    .font(.system(size:
+                                    cryptoCurrency.currentPrice > 0.0001 ? 14 : 9)  )
                     .fontWeight(.semibold)
                     .foregroundColor(cryptoCurrency.priceChangePercentage24H.toPercentColor())
                 
                 Text(cryptoCurrency.currentPrice.toUSDCurrency())
-                    .font(.caption)
+                    .font(.system(size:
+                                    cryptoCurrency.currentPrice > 0.0001 ? 12 : 8)  )
                     .foregroundColor(.gray)
             }
-            .frame(width: 90,alignment: .trailing)
+            .frame(width: 80,alignment: .trailing)
+            .padding(.horizontal,0)
             
             // 24h Change
             VStack{
                 Text(cryptoCurrency.priceChangePercentage24H.toPercentString())
-                    .font(.caption)
+                    .font(.system(size: 11))
                     .fontWeight(.semibold)
-                    .padding(.leading, 4)
                     .foregroundColor(.white)
             }
-            .frame(width: 61)
-            .padding(.all, 10)
+            .frame(width: 55)
+            .padding(.vertical, 11)
+            .padding(.horizontal,3)
             .background(cryptoCurrency.priceChangePercentage24H.toPercentColor())
             .cornerRadius(4)
+            
         }
-        .padding(.horizontal)
-        .padding(.vertical , 4)
         .background(Color.theme.itemBackgroundColor)
-        
+        .padding(.horizontal,4)
     }
 }
 

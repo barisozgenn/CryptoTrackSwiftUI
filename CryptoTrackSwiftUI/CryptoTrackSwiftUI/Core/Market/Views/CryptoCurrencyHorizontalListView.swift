@@ -22,10 +22,11 @@ struct CryptoCurrencyHorizontalListView:  View {
                             .foregroundColor(.gray)
                             .font(.caption)
                         Text("5")
-                            .font(.title)
+                            .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundColor(.gray)
                             .padding(.trailing, 4)
+                            .padding(.leading,-5)
                     }
                     .frame(height: 75)
                         .background(Color.theme.itemBackgroundColor)

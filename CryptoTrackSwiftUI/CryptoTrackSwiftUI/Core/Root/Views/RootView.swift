@@ -14,6 +14,15 @@ struct RootView: View {
     var body: some View {
         TabView{
             MarketView()
+                .tabItem {
+                    Image(systemName: "chart.xyaxis.line")
+                    Text("Market")
+                }
+            VStack{}
+                .tabItem {
+                    Image(systemName: "chart.pie")
+                    Text("Portfolio")
+                }
         }
         .onAppear{
             DispatchQueue
