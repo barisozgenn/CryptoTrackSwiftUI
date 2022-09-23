@@ -45,7 +45,7 @@ struct CurrenciesTableTitleView: View {
             .onTapGesture {
                 viewModel.sortList(type: .price)
             }
-            .withSortButtonViewModifier(frameWidth: 50, isClicked: viewModel.isClickedBtnPrice)
+            .withSortButtonViewModifier(frameWidth: 55, isClicked: viewModel.isClickedBtnPrice)
             
             HStack{
                 Text("24h %")

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct CryptoCurrencyHorizontalCellView: View {
     let cryptoCurrency : CryptoCurrency

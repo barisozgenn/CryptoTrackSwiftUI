@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct CoinDetailView: View {
     let viewModel : CoinDetailViewModel
+    let cryptoCurrency : CryptoCurrency
     
     init(cryptoCurrency: CryptoCurrency){
+        self.cryptoCurrency = cryptoCurrency
+        
         self.viewModel = CoinDetailViewModel(cryptoCurrency: cryptoCurrency)
     }
     
@@ -37,10 +39,10 @@ struct CoinDetailView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigation) {
                         HStack {
-                            KFImage(URL(string: viewModel.currencyImage))
-                                .resizable()
-                                .scaledToFit()
+                            CurrencyImageView(cryptoCurrency: cryptoCurrency)
                                 .frame(width: 32, height: 32)
+                                .foregroundColor(.orange)
+                                .padding(.bottom,6)
                             Text(viewModel.currencyName).font(.headline)
                         }
                     }

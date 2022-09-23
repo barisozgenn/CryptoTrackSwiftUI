@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct CryptoCurrencyCellView:View {
     
@@ -64,16 +63,16 @@ struct CryptoCurrencyCellView:View {
             VStack(alignment: .trailing, spacing: 1){
                 Text(cryptoCurrency.currentPrice.toUSDCurrencyFormatted())
                     .font(.system(size:
-                                    cryptoCurrency.currentPrice > 0.0001 ? 14 : 9)  )
+                                    cryptoCurrency.currentPrice > 0.0001 ? 14 : 12)  )
                     .fontWeight(.semibold)
                     .foregroundColor(cryptoCurrency.priceChangePercentage24H.toPercentColor())
                 
                 Text(cryptoCurrency.currentPrice.toUSDCurrency())
                     .font(.system(size:
-                                    cryptoCurrency.currentPrice > 0.0001 ? 12 : 8)  )
+                                    cryptoCurrency.currentPrice > 0.0001 ? 12 : 10)  )
                     .foregroundColor(.gray)
             }
-            .frame(width: 80,alignment: .trailing)
+            .frame(width: 100,alignment: .trailing)
             .padding(.horizontal,0)
             
             // 24h Change

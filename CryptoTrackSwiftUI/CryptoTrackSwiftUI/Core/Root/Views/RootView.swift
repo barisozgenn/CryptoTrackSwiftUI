@@ -18,7 +18,7 @@ struct RootView: View {
                     Image(systemName: "chart.xyaxis.line")
                     Text("Market")
                 }
-            VStack{}
+            PortfolioView()
                 .tabItem {
                     Image(systemName: "chart.pie")
                     Text("Portfolio")
