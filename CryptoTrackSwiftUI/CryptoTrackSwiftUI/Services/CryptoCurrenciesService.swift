@@ -23,6 +23,7 @@ class CryptoCurrenciesService {
         
         guard let url = URL(string: urlString) else {return}
         
+        print("DEBUG : req API -> market")
         dataSubscription = NetworkManager.download(url: url)
             .decode(type: [CryptoCurrency].self, decoder: JSONDecoder())
             .sink(receiveCompletion: NetworkManager.handleCompletion ,
@@ -30,7 +31,7 @@ class CryptoCurrenciesService {
                 
                 self?.cryptoCurrencies = returnedResponse                
                 self?.dataSubscription?.cancel()
-               
+                print("DEBUG : res API -> market")
             })
         
         

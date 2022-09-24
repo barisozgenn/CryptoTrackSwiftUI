@@ -59,7 +59,7 @@ struct PieChartView: View {
                         Text("■ \(slice.title) %\(avg.asNumberString())")
                             .foregroundColor(slice.color)
                             .fontWeight(.bold)
-                            .font(.system(size: 10))
+                            .font(.system(size: 13))
                     }
                 }
             }

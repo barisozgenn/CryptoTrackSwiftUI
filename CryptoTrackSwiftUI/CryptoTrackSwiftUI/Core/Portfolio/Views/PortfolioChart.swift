@@ -14,49 +14,28 @@ struct PortfolioChart: View {
             // chart pie
             VStack{
                 PieChartView(slices:[
-                    PieChartModel(price: 4, color: .yellow, title: "BTC"),
-                    PieChartModel(price: 1, color: .green, title: "ETH"),
-                    PieChartModel(price: 5, color: .blue, title: "CAKE"),
-                    PieChartModel(price: 4, color: .indigo, title: "MITH"),
-                    PieChartModel(price: 2, color: .purple, title: "LIT")
+                    PieChartModel(price: 4, color: .orange, title: "BTC"),
+                    PieChartModel(price: 2, color: .green, title: "ETH"),
+                    PieChartModel(price: 5, color: .teal, title: "CAKE"),
+                    PieChartModel(price: 4, color: .yellow, title: "MITH"),
+                    PieChartModel(price: 1, color: .gray, title: "LIT")
                 ])
             }
-                .padding()
+            .padding()
             
             // portfolio general values
             VStack(alignment: .trailing){
                 
-                Text("Amount (BTC)")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.gray)
-                Text("1.234")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color.theme.primaryTextColor)
-                
+                portfolioValue(title: "Amount (BTC)", value: "1.24")
                 Divider()
-                
-                Text("USD")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.gray)
-                Text((2412.65).toUSDCurrencyFormatted())
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color.theme.primaryTextColor)
-                
+                portfolioValue(title: "Invesment", value: (2412.65).toUSDCurrencyFormatted())
                 Divider()
-                
-                Text("Profit & Loss")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.gray)
-                Text((-14.29).toPercentString())
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .fontWeight(.semibold)
-                    .foregroundColor((-14.29).toPercentColor())
+                portfolioValue(title: "Current", value: (2004.05).toUSDCurrencyFormatted())
+                Divider()
+                portfolioValue(
+                    title: "Profit & Loss",
+                    value: (-14.29).toPercentString(),
+                    valueColor: (-14.29).toPercentColor())
                 
             }
             .padding()
@@ -65,6 +44,24 @@ struct PortfolioChart: View {
     }
 }
 
+extension PortfolioChart {
+    
+    private func portfolioValue( title : String,
+                                 value : String ,
+                                 valueColor : Color = Color.theme.primaryTextColor) -> some View {
+        
+        return  VStack(alignment: .trailing){
+            Text(title)
+                .font(.caption)
+                .fontWeight(.semibold)
+                .foregroundColor(.gray)
+            Text(value)
+                .font(.subheadline)
+                .fontWeight(.semibold)
+                .foregroundColor(valueColor)
+        }
+    }
+}
 struct PortfolioChart_Previews: PreviewProvider {
     static var previews: some View {
         PortfolioChart()

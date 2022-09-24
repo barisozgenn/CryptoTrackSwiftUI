@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct PortfolioView: View {
+    @StateObject var viewModel = MarketViewModel()
+
     var body: some View {
         VStack{
             // head view
             PortfolioChart()
             
             // list view
-            PortfolioListView()
+            PortfolioListView(viewModel: viewModel)
         }
         .background(Color.theme.appBackgroundColor)
     }

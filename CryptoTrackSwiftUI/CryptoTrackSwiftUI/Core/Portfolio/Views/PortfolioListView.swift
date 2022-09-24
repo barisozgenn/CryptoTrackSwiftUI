@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PortfolioListView: View {
-    @StateObject var viewModel = MarketViewModel()
+    @StateObject var viewModel : MarketViewModel
 
     var body: some View {
         NavigationView{
@@ -56,6 +56,6 @@ struct PortfolioListView: View {
 
 struct PortfolioListView_Previews: PreviewProvider {
     static var previews: some View {
-        PortfolioListView()
+        PortfolioListView(viewModel: MarketViewModel())
     }
 }

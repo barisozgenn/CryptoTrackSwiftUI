@@ -1,27 +1,25 @@
 //
-//  CryptoCurrencyListView.swift
+//  PortfolioSelectGridView.swift
 //  CryptoTrackSwiftUI
 //
-//  Created by Baris OZGEN on 18.09.2022.
+//  Created by Baris OZGEN on 24.09.2022.
 //
 
 import SwiftUI
 
-struct CryptoCurrencyListView: View {
+struct PortfolioSelectGridView: View {
     @StateObject var viewModel : MarketViewModel
-    
+
+    private let adaptiveCell = [GridItem(.adaptive(minimum:86))]
+                                         
     var body: some View {
-        VStack(){
-    
+        VStack {
             // search bar
             SearchBarView(searchText: $viewModel.searchText)
             
-            // table titles
-            CurrenciesTableTitleView(viewModel: viewModel)
-           
-            // table list
+            // portfolio list view
             ScrollView(showsIndicators: false){
-                LazyVStack(spacing: 14){
+                LazyVGrid(columns: adaptiveCell, spacing: 4){
                     
                     ForEach(viewModel.cryptoCurrencies){cryptoCurrency in
                         
@@ -31,23 +29,19 @@ struct CryptoCurrencyListView: View {
                         }
                     label:{
                         
-                        CryptoCurrencyCellView(cryptoCurrency: cryptoCurrency)
+                        PortfolioSelectCellView(cryptoCurrency: cryptoCurrency)
                         
-                      
                     }
                         
                     }
                 }
             }
-            .refreshable {
-                viewModel.refreshData()
-            }
         }
     }
 }
 
-struct CryptoCurrencyListView_Previews: PreviewProvider {
+struct PortfolioSelectGridView_Previews: PreviewProvider {
     static var previews: some View {
-        CryptoCurrencyListView(viewModel: MarketViewModel())
+        PortfolioSelectGridView(viewModel: MarketViewModel())
     }
 }

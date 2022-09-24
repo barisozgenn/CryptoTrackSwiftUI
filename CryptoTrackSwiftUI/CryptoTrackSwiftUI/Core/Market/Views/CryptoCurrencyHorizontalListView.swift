@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CryptoCurrencyHorizontalListView:  View {
-    @StateObject var viewModel = MarketViewModel()
+    @StateObject var viewModel : MarketViewModel
     
     var body: some View {
         VStack(alignment: .leading){
@@ -52,6 +52,6 @@ struct CryptoCurrencyHorizontalListView:  View {
 
 struct CryptoCurrencyHorizontalListView_Previews: PreviewProvider {
     static var previews: some View {
-        CryptoCurrencyHorizontalListView()
+        CryptoCurrencyHorizontalListView(viewModel: MarketViewModel())
     }
 }

@@ -13,7 +13,7 @@ struct PortfolioCellView: View {
         
         init(cryptoCurrency : CryptoCurrency){
             self.cryptoCurrency = cryptoCurrency
-            print("Loading row \(cryptoCurrency.marketCapRank)")
+            print("Loading row \(cryptoCurrency.symbol)")
         }
         var body: some View {
             HStack{

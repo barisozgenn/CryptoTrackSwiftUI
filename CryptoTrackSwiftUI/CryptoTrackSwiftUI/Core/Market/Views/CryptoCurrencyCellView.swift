@@ -11,10 +11,6 @@ struct CryptoCurrencyCellView:View {
     
     let cryptoCurrency : CryptoCurrency
     
-    init(cryptoCurrency : CryptoCurrency){
-        self.cryptoCurrency = cryptoCurrency
-        print("Loading row \(cryptoCurrency.marketCapRank)")
-    }
     var body: some View {
         HStack{
             // market rank & image

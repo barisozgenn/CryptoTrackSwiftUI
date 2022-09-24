@@ -16,6 +16,8 @@ extension Double {
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2
         formatter.numberStyle = .currency
+        formatter.currencyCode = "USD"
+        formatter.currencySymbol = "$"
         return formatter
     }
     private var percentageFormatter : NumberFormatter {
@@ -53,7 +55,7 @@ extension Double {
         while (priceString.last == "0"){
           priceString = String(priceString.dropLast())
         }
-        if priceString.last == "." {priceString =  String(priceString.dropLast())}
+        if priceString.last == "." || priceString.last == "," {priceString =  String(priceString.dropLast())}
         
         return priceString
     }

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MarketView: View {
-    
-    @StateObject var viewModel = MarketViewModel()
-    
+        
+    @StateObject private var viewModel = MarketViewModel()
+
     var body: some View {
         NavigationView{
                 VStack{
