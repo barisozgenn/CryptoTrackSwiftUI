@@ -32,7 +32,7 @@ struct PortfolioListView: View {
                         ForEach(viewModel.cryptoCurrencies){cryptoCurrency in
                             
                             NavigationLink{
-                                LayzNavigationView(build: CoinDetailView(cryptoCurrency: cryptoCurrency))
+                                LayzNavigationView(build: PortfolioEditView(cryptoCurrency: cryptoCurrency))
                                 
                             }
                         label:{

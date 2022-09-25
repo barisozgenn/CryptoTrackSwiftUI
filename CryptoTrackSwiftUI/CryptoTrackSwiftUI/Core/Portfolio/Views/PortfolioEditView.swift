@@ -21,7 +21,7 @@ struct PortfolioEditView: View {
         String(format: "%.2f", cryptoCurrency.currentPrice)
     }
     var body: some View {
-        NavigationView{
+        ZStack{
             ScrollView{
                 
                 PortfolioCellView(cryptoCurrency: cryptoCurrency)
@@ -37,19 +37,7 @@ struct PortfolioEditView: View {
             .navigationTitle("Edit Portfolio")
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarTrailing){
-                    Button(action: {
-                        if canBeSaved() {
-                            
-                        }
-                    }, label: {
-                        Image(systemName: "checkmark")
-                            .fontWeight(.bold)
-                            .opacity(canBeSaved() ? 1 : 0)
-                        Text("Save".uppercased())
-                            .fontWeight(.bold)
-                            .opacity(canBeSaved() ? 1 : 0.3)
-                    })
-                    
+                    portfolioSaveButton
                 }
             })
         }
@@ -204,6 +192,21 @@ extension PortfolioEditView {
         .background(Color.theme.appBackgroundColor)
     }
     
+    private var portfolioSaveButton: some View {
+        Button(action: {
+            if canBeSaved() {
+                
+            }
+        },
+               label: {
+            Image(systemName: "checkmark")
+                .fontWeight(.bold)
+                .opacity(canBeSaved() ? 1 : 0)
+            Text("Save".uppercased())
+                .fontWeight(.bold)
+                .opacity(canBeSaved() ? 1 : 0.3)
+        })
+    }
 }
 
 struct PortfolioEditView_Previews: PreviewProvider {
