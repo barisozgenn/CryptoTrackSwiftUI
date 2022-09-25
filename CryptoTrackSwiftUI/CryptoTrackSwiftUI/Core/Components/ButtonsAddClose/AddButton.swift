@@ -24,8 +24,7 @@ struct AddButton: View {
                 .cornerRadius(.infinity)
         })
         .sheet(isPresented: $showingSheet) {
-            PortfolioEditView()
-                .environmentObject(viewModel)
+           // PortfolioEditView() .environmentObject(viewModel)
         }
     }
 }
