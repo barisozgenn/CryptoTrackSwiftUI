@@ -19,8 +19,14 @@ class PortfolioViewModel:  ObservableObject {
     
     @Published var searchText : String = ""
     
+    @Published private(set) var portfolioBTCAmount : Double = 0
+    @Published private(set) var portfolioInvesmentPrice : Double = 0
+    @Published private(set) var portfolioCurrentPrice : Double = 0
+    @Published private(set) var portfolioProfitLoss : Double = 0
+    
     init(){
         fetchData()
+       
     }
     
     private func fetchData(){
@@ -37,19 +43,21 @@ class PortfolioViewModel:  ObservableObject {
         
         $cryptoCurrencies
             .combineLatest(portfolioEntityService.$entities)
-            .map{(currencyModel, portfolioEntities) -> [CryptoCurrency] in
+            .map{(currencyList, portfolioEntities) -> [CryptoCurrency] in
                 
-                currencyModel
+                currencyList
                     .compactMap{(currency) -> CryptoCurrency? in
-                        guard let entity = portfolioEntities.first(where: {$0.coinID == currency.id}) else {
-                            return nil
-                        }
-                        return currency.updateHolding(unitPrice: entity.unitPrice, amount: entity.amount, transactionType: entity.transactionType ?? "b", dateCreated: entity.dateCreated ?? Date())
+                        guard let entity = portfolioEntities.first(where: {$0.coinID == currency.id}) else { return nil }
+                        
+                        return self.calculateHoldingTotal(pEntity: entity, pEntities: portfolioEntities, currency: currency)
+                        //return currency.updateHolding(unitPrice: entity.unitPrice, amount: entity.amount, transactionType: entity.transactionType ?? "b", dateCreated: entity.dateCreated ?? Date())
                         
                     }
             }
             .sink{[weak self] (portfolioCurrencies) in
                 self?.portfolioCryptoCurrencies = portfolioCurrencies
+                self?.calculateHoldingChart()
+                
             }
             .store(in: &cancellables)
 
@@ -77,4 +85,28 @@ class PortfolioViewModel:  ObservableObject {
     func editPortfolio (currency : CryptoCurrency, unitPrice: Double = 0 , amount : Double = 0, trancastionType : String = "b" , crudType : PortfolioDataService.ECrudType){
         portfolioEntityService.editPortfolio(currency: currency,unitPrice: unitPrice , amount : amount, trancastionType : trancastionType, crudType: crudType)
     }
+    
+    private func calculateHoldingTotal(pEntity : PortfolioEntity, pEntities : [PortfolioEntity], currency : CryptoCurrency) -> CryptoCurrency {
+        
+        let selectedCurrencyList = pEntities.filter{ent in ent.coinID == pEntity.coinID && ent.transactionType == "b" }
+        
+        let totalAmount : Double = selectedCurrencyList.map { $0.amount }.reduce(0.0, +)
+        let totalPrice : Double = selectedCurrencyList.map { $0.amount * $0.unitPrice }.reduce(0.0, +)
+        let unitPrice : Double = totalPrice / totalAmount
+        
+        return currency.updateHolding(unitPrice: unitPrice, amount: totalAmount, transactionType: pEntity.transactionType ?? "b", dateCreated: pEntity.dateCreated ?? Date())
+
+    }
+    
+    
+    private func calculateHoldingChart(){
+        
+        portfolioInvesmentPrice = portfolioCryptoCurrencies.map {($0.portfolioUnitPrice ?? 0) * ($0.portfolioAmount ?? 0)}.reduce(0.0, +)
+        portfolioCurrentPrice = portfolioCryptoCurrencies.map { $0.currentPrice * ($0.portfolioAmount ?? 0)}.reduce(0.0, +)
+        
+        portfolioProfitLoss = ((portfolioCurrentPrice - portfolioInvesmentPrice) / portfolioInvesmentPrice) * 100
+        
+        portfolioBTCAmount = portfolioInvesmentPrice / (dataService.cryptoCurrencies.first?.currentPrice ?? 00)
+    }
+    
 }

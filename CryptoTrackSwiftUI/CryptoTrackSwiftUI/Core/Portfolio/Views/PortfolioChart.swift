@@ -7,6 +7,9 @@
 
 import SwiftUI
 struct PortfolioChart: View {
+    
+    @StateObject var viewModel : PortfolioViewModel
+
     var body: some View {
         
         HStack(spacing:0){
@@ -26,16 +29,16 @@ struct PortfolioChart: View {
             // portfolio general values
             VStack(alignment: .trailing){
                 
-                portfolioValue(title: "Amount (BTC)", value: "1.24")
+                portfolioValue(title: "Amount (BTC)", value: String(format: "%.4f", viewModel.portfolioBTCAmount))
                 Divider()
-                portfolioValue(title: "Invesment", value: (2412.65).toUSDCurrencyFormatted())
+                portfolioValue(title: "Invesment", value: viewModel.portfolioInvesmentPrice.toUSDCurrencyFormatted())
                 Divider()
-                portfolioValue(title: "Current", value: (2004.05).toUSDCurrencyFormatted())
+                portfolioValue(title: "Current", value: viewModel.portfolioCurrentPrice.toUSDCurrencyFormatted())
                 Divider()
                 portfolioValue(
                     title: "Profit & Loss",
-                    value: (-14.29).toPercentString(),
-                    valueColor: (-14.29).toPercentColor())
+                    value: viewModel.portfolioProfitLoss.toPercentString(),
+                    valueColor: viewModel.portfolioProfitLoss.toPercentColor())
                 
             }
             .padding()
@@ -64,6 +67,6 @@ extension PortfolioChart {
 }
 struct PortfolioChart_Previews: PreviewProvider {
     static var previews: some View {
-        PortfolioChart()
+        PortfolioChart(viewModel: PortfolioViewModel())
     }
 }

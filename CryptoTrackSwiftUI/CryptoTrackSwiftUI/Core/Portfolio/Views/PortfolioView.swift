@@ -13,7 +13,7 @@ struct PortfolioView: View {
     var body: some View {
         VStack{
             // head view
-            PortfolioChart()
+            PortfolioChart(viewModel: viewModel)
             
             // list view
             PortfolioListView(viewModel: viewModel)

@@ -56,7 +56,7 @@ struct PortfolioCellView: View {
                         minHeight: 0,
                         maxHeight: 50)
                 
-                // Avg price
+                // unit price
                 VStack(alignment: .trailing, spacing: 1){
                     Text((cryptoCurrency.portfolioUnitPrice ?? 0).toUSDCurrencyFormatted())
                         .font(.system(size:
@@ -64,7 +64,7 @@ struct PortfolioCellView: View {
                         .fontWeight(.semibold)
                         .foregroundColor(Color.theme.primaryTextColor)
                     
-                    Text(String(cryptoCurrency.portfolioAmount ?? 0))
+                    Text(String(format: "%.2f", cryptoCurrency.portfolioAmount ?? 0))
                         .font(.caption)
                         .fontWeight(.semibold)
                         .foregroundColor(.gray)

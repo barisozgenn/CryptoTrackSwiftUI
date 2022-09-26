@@ -24,7 +24,7 @@ struct PortfolioTableTitleView: View {
                     minHeight: 0,
                     maxHeight: 50)
             
-            Text("Amount")
+            Text("Unit Price")
                 .frame(width: 80, alignment: .center)
             Text("Price")
                 .frame(width: 80, alignment: .center)
