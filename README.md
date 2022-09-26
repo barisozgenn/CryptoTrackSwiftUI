@@ -1,2 +1,2 @@
 # CryptoTrackSwiftUI
-Crypto Track app SwiftUI MVVM
+Crypto Track app SwiftUI MVVM ios16
