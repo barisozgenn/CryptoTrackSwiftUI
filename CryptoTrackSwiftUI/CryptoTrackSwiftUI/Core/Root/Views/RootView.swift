@@ -11,26 +11,35 @@ struct RootView: View {
     
     @EnvironmentObject var launchScreenManager : LaunchScreenViewModel
     
+    @StateObject private var viewModel = RootViewModel()
+    
     var body: some View {
-        TabView{
-            MarketView()
-                .tabItem {
-                    Image(systemName: "chart.xyaxis.line")
-                    Text("Market")
+        ZStack{
+            NavigationView{
+                TabView{
+                    MarketView()
+                        .tabItem {
+                            Image(systemName: "chart.xyaxis.line")
+                            Text("Market")
+                        }
+                    
+                    PortfolioView()
+                        .tabItem {
+                            Image(systemName: "chart.pie")
+                            Text("Portfolio")
+                        }
                 }
-            PortfolioView()
-                .tabItem {
-                    Image(systemName: "chart.pie")
-                    Text("Portfolio")
+                .onAppear{
+                    DispatchQueue
+                        .main
+                        .asyncAfter(deadline: .now() + 1.74 ) {
+                            launchScreenManager.dismiss()
+                        }
                 }
+            }
         }
-        .onAppear{
-            DispatchQueue
-                .main
-                .asyncAfter(deadline: .now() + 1.74 ) {
-                    launchScreenManager.dismiss()
-                }
-        }
+      
+       
     }
 }
 

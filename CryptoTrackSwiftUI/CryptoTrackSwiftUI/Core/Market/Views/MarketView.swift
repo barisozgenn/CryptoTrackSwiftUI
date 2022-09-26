@@ -12,7 +12,7 @@ struct MarketView: View {
     @StateObject private var viewModel = MarketViewModel()
 
     var body: some View {
-        NavigationView{
+        ZStack{
                 VStack{
 
                     VStack{
@@ -35,12 +35,10 @@ struct MarketView: View {
                     
                     
                 }
-              
             
-                if viewModel.isLoading {
-                    CustomLoadingIndicator()
-                }
-                
+              if viewModel.isLoading {
+                  CustomLoadingIndicator()
+              }
             }
             .background(Color.theme.appBackgroundColor)
             .navigationTitle("Live Datas")

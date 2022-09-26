@@ -8,11 +8,9 @@
 import Foundation
 import Combine
 class MarketViewModel:  ObservableObject {
-    
-   
+        
     @Published private(set) var cryptoCurrencies = [CryptoCurrency]()
     @Published private(set) var topCryptoCurrencies = [CryptoCurrency]()
-    @Published var isLoading = true
     
     @Published private(set) var btnRankImageDirection = ""
     @Published private(set) var btnNameImageDirection = ""
@@ -23,36 +21,37 @@ class MarketViewModel:  ObservableObject {
     @Published private(set) var isClickedBtnName = false
     @Published private(set) var isClickedBtnPrice = false
     @Published private(set) var isClickedBtnPercentage = false
+    @Published var isLoading = true
 
     @Published var searchText : String = ""
     
     private var lastSortType : ListSortType = .rankLow
-
+    
     private let dataService = CryptoCurrenciesService()
     private var cancellables = Set<AnyCancellable>()
     
     init(){
+        
         fetchData()
         setSortButtonStyle()
     }
     
     private func fetchData(){
         
-        $searchText
-            .combineLatest(dataService.$cryptoCurrencies)
-            .debounce(for: .seconds(0.7), scheduler: DispatchQueue.main)
-            .map(searchCurrencies)
-            .sink{[weak self] (searchedCurrencies) in
-               
-                self?.cryptoCurrencies = searchedCurrencies
-                self?.sortTopMovingCryptoCurrencies()
+         $searchText
+             .combineLatest(dataService.$cryptoCurrencies)
+             .debounce(for: .seconds(0.7), scheduler: DispatchQueue.main)
+             .map(searchCurrencies)
+             .sink{[weak self] (searchedCurrencies) in
+                
+                 self?.cryptoCurrencies = searchedCurrencies
+                 self?.sortTopMovingCryptoCurrencies()
 
-                self?.isLoading = false
+                 self?.isLoading = false
 
-            }
-            .store(in: &cancellables)
-        
-
+             }
+             .store(in: &cancellables)
+         
     }
     
     private func searchCurrencies(text:String, searchCurrencies : [CryptoCurrency]) -> [CryptoCurrency]{

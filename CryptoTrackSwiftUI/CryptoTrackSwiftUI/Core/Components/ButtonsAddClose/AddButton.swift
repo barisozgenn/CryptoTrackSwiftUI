@@ -8,29 +8,34 @@
 import SwiftUI
 
 struct AddButton: View {
-    @State private var showingSheet = false
-    @EnvironmentObject private var viewModel : MarketViewModel
+    @StateObject var viewModel : PortfolioViewModel
     
     var body: some View {
-        Button(action: {
-            showingSheet.toggle()
-        }, label:{
-            Image(systemName: "plus")
-                .font(.headline)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .padding(14)
-                .background(.blue)
-                .cornerRadius(.infinity)
-        })
-        .sheet(isPresented: $showingSheet) {
-           // PortfolioEditView() .environmentObject(viewModel)
+      
+            NavigationLink{
+              LayzNavigationView(build: PortfolioSelectGridView(viewModel: viewModel))
+            }
+        label:{
+            
+            ZStack{
+                Image(systemName: "plus")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding(14)
+                    .background(.blue)
+                    .cornerRadius(.infinity)
+            }
+            .withPositiveButtonStyle()
+            
         }
+            
+        
     }
 }
 
 struct AddButton_Previews: PreviewProvider {
     static var previews: some View {
-        AddButton()
+        AddButton(viewModel: PortfolioViewModel())
     }
 }

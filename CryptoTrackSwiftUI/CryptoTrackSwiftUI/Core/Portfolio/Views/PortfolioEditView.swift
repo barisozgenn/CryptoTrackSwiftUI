@@ -9,11 +9,18 @@ import SwiftUI
 
 struct PortfolioEditView: View {
     
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+
+    @StateObject var viewModel : PortfolioViewModel
     let cryptoCurrency : CryptoCurrency
     
     @State private var currencyAmountText : String = "0.00"
     @State private var currencyPriceText : String = "18789.54"
-    @State private var transactionType = "BUY"
+    
+    let transactionTypeBuy = "b"
+    let transactionTypeSell = "s"
+    
+    @State private var transactionType = "b"
     @State private var totalHoldings : Double = 0
     
     /*init(cryptoCurrency : CryptoCurrency){
@@ -40,6 +47,7 @@ struct PortfolioEditView: View {
                     portfolioSaveButton
                 }
             })
+           
         }
         
         
@@ -47,6 +55,20 @@ struct PortfolioEditView: View {
 }
 
 extension PortfolioEditView {
+    
+    private func getUnitPrice() -> Double {
+        if let unitPrice = Double(currencyPriceText) {
+            return unitPrice
+        }
+        return 0
+    }
+    private func getAmount() -> Double {
+        if let amount = Double(currencyAmountText) {
+            return amount
+        }
+        return 0
+    }
+    
     private func getTotalCost() -> Double {
         if let amount = Double(currencyAmountText),
            let price = Double(currencyPriceText) {
@@ -57,9 +79,9 @@ extension PortfolioEditView {
     private func getTotalHolding() -> Double {
         if let amount = Double(currencyAmountText) {
             var total = totalHoldings
-            if transactionType == "BUY"{
+            if transactionType == transactionTypeBuy{
                 total += amount
-            } else if transactionType == "SELL"{
+            } else if transactionType == transactionTypeSell{
                 total -= amount
             }
                         
@@ -67,6 +89,7 @@ extension PortfolioEditView {
         }
         return 0
     }
+    
     private func canBeSaved() -> Bool {
         if getTotalHolding() > 0 && getTotalCost() > 0 { return true}
         return false
@@ -80,13 +103,13 @@ extension PortfolioEditView {
                 // SELL & BUY
                 Menu {
                     Button {
-                        transactionType = "BUY"
+                        transactionType = transactionTypeBuy
                     } label: {
                         Text("BUY")
                         Image(systemName: "arrow.up.right.circle")
                     }
                     Button {
-                        transactionType = "SELL"
+                        transactionType = transactionTypeSell
                     } label: {
                         Text("SELL")
                         Image(systemName: "arrow.down.right.circle")
@@ -98,11 +121,11 @@ extension PortfolioEditView {
                         Spacer()
                         
                         HStack{
-                            Text(transactionType)
+                            Text(transactionType == transactionTypeBuy ? "BUY" : "SELL")
                                 .fontWeight(.bold)
-                            Image(systemName: transactionType == "BUY" ? "arrow.up.right.circle" : "arrow.down.right.circle")
+                            Image(systemName: transactionType == transactionTypeBuy ? "arrow.up.right.circle" : "arrow.down.right.circle")
                         }
-                        .foregroundColor(transactionType == "BUY" ? Color.theme.currencyGreenColor : Color.theme.currencyRedColor)
+                        .foregroundColor(transactionType == transactionTypeBuy ? Color.theme.currencyGreenColor : Color.theme.currencyRedColor)
                         
                     }
                 }
@@ -196,6 +219,16 @@ extension PortfolioEditView {
         Button(action: {
             if canBeSaved() {
                 
+                UIApplication.shared.endEditing()
+                
+                viewModel.editPortfolio(
+                    currency: cryptoCurrency,
+                    unitPrice: getUnitPrice(),
+                    amount: getAmount(),
+                    trancastionType: transactionType,
+                    crudType: .add)
+                
+                self.presentationMode.wrappedValue.dismiss()
             }
         },
                label: {
@@ -211,7 +244,7 @@ extension PortfolioEditView {
 
 struct PortfolioEditView_Previews: PreviewProvider {
     static var previews: some View {
-        PortfolioEditView(cryptoCurrency: dev.cryptoCurrency)
+        PortfolioEditView(viewModel: PortfolioViewModel(), cryptoCurrency: dev.cryptoCurrency)
     }
     
     

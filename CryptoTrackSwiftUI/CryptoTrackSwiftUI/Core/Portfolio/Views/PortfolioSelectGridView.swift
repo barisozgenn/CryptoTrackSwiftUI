@@ -9,36 +9,36 @@ import SwiftUI
 
 struct PortfolioSelectGridView: View {
     @StateObject var viewModel : PortfolioViewModel
-
+    
     private let adaptiveCell = [GridItem(.adaptive(minimum:86))]
-                                         
+    
     var body: some View {
-        NavigationView {
-            VStack {
-                // search bar
-                SearchBarView(searchText: $viewModel.searchText)
-                
-                // portfolio list view
-                ScrollView(showsIndicators: false){
-                    LazyVGrid(columns: adaptiveCell, spacing: 4){
+        
+        VStack {
+            // search bar
+            SearchBarView(searchText: $viewModel.searchText)
+            
+            // portfolio list view
+            ScrollView(showsIndicators: false){
+                LazyVGrid(columns: adaptiveCell, spacing: 4){
+                    
+                    ForEach(viewModel.cryptoCurrencies){cryptoCurrency in
                         
-                        ForEach(viewModel.cryptoCurrencies){cryptoCurrency in
-                            
-                            NavigationLink{
-                                LayzNavigationView(build: PortfolioEditView(cryptoCurrency: cryptoCurrency))
-                                
-                            }
-                        label:{
-                            
-                            PortfolioSelectCellView(cryptoCurrency: cryptoCurrency)
+                        NavigationLink{
+                            LayzNavigationView(build: PortfolioEditView(viewModel: viewModel, cryptoCurrency: cryptoCurrency))
                             
                         }
-                            
-                        }
+                    label:{
+                        
+                        PortfolioSelectCellView(cryptoCurrency: cryptoCurrency)
+                        
+                    }
+                        
                     }
                 }
             }
         }
+        
     }
 }
 

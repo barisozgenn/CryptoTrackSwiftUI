@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CurrenciesTableTitleView: View {
     
-    @StateObject var viewModel = MarketViewModel()
+    @StateObject var viewModel : MarketViewModel
     
     var body: some View {
         HStack{
@@ -65,6 +65,6 @@ struct CurrenciesTableTitleView: View {
 
 struct TableTitleView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrenciesTableTitleView()
+        CurrenciesTableTitleView(viewModel: MarketViewModel())
     }
 }

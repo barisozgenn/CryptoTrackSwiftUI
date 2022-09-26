@@ -36,9 +36,9 @@ struct PortfolioCellView: View {
                 }
                 .frame(width: 45, alignment: .leading)
                 
-                // 24h Change
+                // Profit Unit Change
                 VStack{
-                    Text(cryptoCurrency.priceChangePercentage24H.toPercentString())
+                    Text(unitPercentageProfit().toPercentString())
                         .font(.system(size: 11))
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
@@ -46,7 +46,7 @@ struct PortfolioCellView: View {
                 .frame(width: 55)
                 .padding(.vertical, 11)
                 .padding(.horizontal,3)
-                .background(cryptoCurrency.priceChangePercentage24H.toPercentColor())
+                .background(unitPercentageProfit().toPercentColor())
                 .cornerRadius(4)
                
                 Spacer()
@@ -58,13 +58,13 @@ struct PortfolioCellView: View {
                 
                 // Avg price
                 VStack(alignment: .trailing, spacing: 1){
-                    Text(cryptoCurrency.currentPrice.toUSDCurrencyFormatted())
+                    Text((cryptoCurrency.portfolioUnitPrice ?? 0).toUSDCurrencyFormatted())
                         .font(.system(size:
                                         cryptoCurrency.currentPrice > 0.0001 ? 14 : 12)  )
                         .fontWeight(.semibold)
                         .foregroundColor(Color.theme.primaryTextColor)
                     
-                    Text("100.000.345")
+                    Text(String(cryptoCurrency.portfolioAmount ?? 0))
                         .font(.caption)
                         .fontWeight(.semibold)
                         .foregroundColor(.gray)
@@ -94,7 +94,13 @@ struct PortfolioCellView: View {
     
     
 }
-
+extension PortfolioCellView {
+    func unitPercentageProfit() -> Double {
+        return (
+            ((cryptoCurrency.currentPrice - (cryptoCurrency.portfolioUnitPrice ?? 0.0))
+            / (cryptoCurrency.portfolioUnitPrice ?? 0.0)) * 100)
+    }
+}
 struct PortfolioCellView_Previews: PreviewProvider {
     static var previews: some View {
         PortfolioCellView(cryptoCurrency: dev.cryptoCurrency)

@@ -9,7 +9,9 @@ import SwiftUI
 
 struct PortfolioSelectCellView: View {
     let cryptoCurrency : CryptoCurrency
-    
+    init(cryptoCurrency: CryptoCurrency) {
+        self.cryptoCurrency = cryptoCurrency
+    }
     var body: some View {
         VStack(spacing: 4){
             // image

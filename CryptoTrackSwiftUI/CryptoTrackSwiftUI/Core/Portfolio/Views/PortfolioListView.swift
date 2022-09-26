@@ -9,45 +9,44 @@ import SwiftUI
 
 struct PortfolioListView: View {
     @StateObject var viewModel : PortfolioViewModel
-
+    
     var body: some View {
-        NavigationView{
-            VStack(alignment: .trailing){
-                HStack{
-                    // search bar
-                    SearchBarView(searchText: $viewModel.searchText)
+        VStack(alignment: .trailing){
+            HStack{
+                // search bar
+                SearchBarView(searchText: $viewModel.searchText)
+                
+                // add portfolio button
+                AddButton(viewModel: viewModel)
+            }
+            .padding(.trailing, 10)
+            
+            // table title
+            PortfolioTableTitleView()
+            
+            // portfolio list view
+            ScrollView(showsIndicators: false){
+                LazyVStack(spacing: 14){
                     
-                    // add portfolio button
-                    AddButton()
-                }
-                .padding(.trailing, 10)
-                
-                // table title
-                PortfolioTableTitleView()
-                
-                // portfolio list view
-                ScrollView(showsIndicators: false){
-                    LazyVStack(spacing: 14){
+                    ForEach(viewModel.portfolioCryptoCurrencies){cryptoCurrency in
                         
-                        ForEach(viewModel.portfolioCryptoCurrencies){cryptoCurrency in
-                            
-                            NavigationLink{
-                                LayzNavigationView(build: PortfolioEditView(cryptoCurrency: cryptoCurrency))
-                                
-                            }
-                        label:{
-                            
-                            PortfolioCellView(cryptoCurrency: cryptoCurrency)
+                        NavigationLink{
+                            LayzNavigationView(build: PortfolioEditView(viewModel: viewModel, cryptoCurrency: cryptoCurrency))
                             
                         }
-                            
-                        }
+                    label:{
+                        
+                        PortfolioCellView(cryptoCurrency: cryptoCurrency)
+                        
+                    }
+                        
                     }
                 }
-                
-            
             }
+            
+            
         }
+        
     }
 }
 

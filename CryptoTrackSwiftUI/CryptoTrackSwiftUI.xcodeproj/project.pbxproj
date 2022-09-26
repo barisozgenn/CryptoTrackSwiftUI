@@ -21,6 +21,7 @@
 		AF37CBAB28DF098700DF0182 /* PortfolioSelectGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF37CBAA28DF098700DF0182 /* PortfolioSelectGridView.swift */; };
 		AF37CBAE28E0C9CE00DF0182 /* PortfolioContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF37CBAC28E0C9CE00DF0182 /* PortfolioContainer.xcdatamodeld */; };
 		AF37CBB028E0CABB00DF0182 /* PortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF37CBAF28E0CABB00DF0182 /* PortfolioDataService.swift */; };
+		AF37CBB228E1AEDA00DF0182 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF37CBB128E1AEDA00DF0182 /* RootViewModel.swift */; };
 		AF3B9E4F28D456E700006195 /* CustomLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3B9E4E28D456E700006195 /* CustomLoadingIndicator.swift */; };
 		AF3B9E5128D45B8400006195 /* LayzNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3B9E5028D45B8400006195 /* LayzNavigationView.swift */; };
 		AF3B9E5828D5C94300006195 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3B9E5728D5C94300006195 /* LaunchScreenView.swift */; };
@@ -78,6 +79,7 @@
 		AF37CBAA28DF098700DF0182 /* PortfolioSelectGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioSelectGridView.swift; sourceTree = "<group>"; };
 		AF37CBAD28E0C9CE00DF0182 /* PortfolioContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PortfolioContainer.xcdatamodel; sourceTree = "<group>"; };
 		AF37CBAF28E0CABB00DF0182 /* PortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDataService.swift; sourceTree = "<group>"; };
+		AF37CBB128E1AEDA00DF0182 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		AF3B9E4E28D456E700006195 /* CustomLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingIndicator.swift; sourceTree = "<group>"; };
 		AF3B9E5028D45B8400006195 /* LayzNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayzNavigationView.swift; sourceTree = "<group>"; };
 		AF3B9E5428D5C6BB00006195 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 		AF76CB5A28D76326000B4F94 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				AF37CBB128E1AEDA00DF0182 /* RootViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				AF52C55928D329D000FC7A1A /* Date.swift in Sources */,
 				AF52C55128D3101F00FC7A1A /* PreviewProvider.swift in Sources */,
 				AFEAF19F28DC639B00B1AB98 /* CurrenciesTableTitleView.swift in Sources */,
+				AF37CBB228E1AEDA00DF0182 /* RootViewModel.swift in Sources */,
 				AF76CB7028DAE3A3000B4F94 /* CurrencyImageViewModel.swift in Sources */,
 				AF37CB8A28DDA6CE00DF0182 /* AddButton.swift in Sources */,
 				AF37CBA928DF05D600DF0182 /* PortfolioSelectCellView.swift in Sources */,
