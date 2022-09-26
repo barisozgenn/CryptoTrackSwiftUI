@@ -11,10 +11,6 @@ struct PortfolioCellView: View {
   
         let cryptoCurrency : CryptoCurrency
         
-        init(cryptoCurrency : CryptoCurrency){
-            self.cryptoCurrency = cryptoCurrency
-            print("Loading row \(cryptoCurrency.symbol)")
-        }
         var body: some View {
             HStack{
                 // image

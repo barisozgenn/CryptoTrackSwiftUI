@@ -32,7 +32,7 @@ class PortfolioDataService {
     
     // MARK: PUBLIC SECTION
 
-    func editPortfolio(currency : CryptoCurrency, unitPrice: Double = 0 , amount : Double = 0, trancastionType : String = "b" , crudType : eCrudType){
+    func editPortfolio(currency : CryptoCurrency, unitPrice: Double = 0 , amount : Double = 0, trancastionType : String = "b" , crudType : ECrudType){
         
         switch crudType {
             
@@ -50,7 +50,7 @@ class PortfolioDataService {
          
     }
     
-    enum eCrudType {
+    public enum ECrudType {
         case add
         case update
         case delete
@@ -71,9 +71,10 @@ class PortfolioDataService {
         
         let entity = PortfolioEntity(context: container.viewContext)
         entity.amount = amount
-        entity.price = unitPrice
+        entity.unitPrice = unitPrice
         entity.transactionType = trancastionType
         entity.coinID = currency.id
+        entity.dateCreated = Date()
         
         applyChanges()
     }
@@ -81,7 +82,7 @@ class PortfolioDataService {
     private func updateTransaction(entity: PortfolioEntity, unitPrice: Double , amount : Double, trancastionType : String){
         
         entity.amount = amount
-        entity.price = unitPrice
+        entity.unitPrice = unitPrice
         entity.transactionType = trancastionType
         
         applyChanges()

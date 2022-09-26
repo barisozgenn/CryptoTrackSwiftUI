@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PortfolioListView: View {
-    @StateObject var viewModel : MarketViewModel
+    @StateObject var viewModel : PortfolioViewModel
 
     var body: some View {
         NavigationView{
@@ -29,7 +29,7 @@ struct PortfolioListView: View {
                 ScrollView(showsIndicators: false){
                     LazyVStack(spacing: 14){
                         
-                        ForEach(viewModel.cryptoCurrencies){cryptoCurrency in
+                        ForEach(viewModel.portfolioCryptoCurrencies){cryptoCurrency in
                             
                             NavigationLink{
                                 LayzNavigationView(build: PortfolioEditView(cryptoCurrency: cryptoCurrency))
@@ -44,9 +44,6 @@ struct PortfolioListView: View {
                         }
                     }
                 }
-                .refreshable {
-                    viewModel.refreshData()
-                }
                 
             
             }
@@ -56,6 +53,6 @@ struct PortfolioListView: View {
 
 struct PortfolioListView_Previews: PreviewProvider {
     static var previews: some View {
-        PortfolioListView(viewModel: MarketViewModel())
+        PortfolioListView(viewModel: PortfolioViewModel())
     }
 }

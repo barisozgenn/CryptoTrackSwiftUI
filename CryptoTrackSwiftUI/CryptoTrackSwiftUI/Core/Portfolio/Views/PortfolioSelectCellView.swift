@@ -10,10 +10,6 @@ import SwiftUI
 struct PortfolioSelectCellView: View {
     let cryptoCurrency : CryptoCurrency
     
-    init(cryptoCurrency : CryptoCurrency){
-        self.cryptoCurrency = cryptoCurrency
-        print("Loading row \(cryptoCurrency.symbol)")
-    }
     var body: some View {
         VStack(spacing: 4){
             // image

@@ -223,5 +223,13 @@ class DeveloperPreview{
             20072.48165582401,
             20017.664914669414,
             20045.211071435988]) ,
-        priceChangePercentage24HInCurrency: -0.8133402402824212)
+        priceChangePercentage24HInCurrency: -0.8133402402824212,
+        
+        portfolioAmount : 1.29,
+        portfolioUnitPrice : 17.789,
+        portfolioTransactionType : "b",
+        portfolioDateCreated : Date()
+    )
+    
+    
 }

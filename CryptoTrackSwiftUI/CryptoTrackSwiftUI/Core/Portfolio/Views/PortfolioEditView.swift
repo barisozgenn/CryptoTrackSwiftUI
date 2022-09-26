@@ -10,16 +10,16 @@ import SwiftUI
 struct PortfolioEditView: View {
     
     let cryptoCurrency : CryptoCurrency
+    
     @State private var currencyAmountText : String = "0.00"
-    @State private var currencyPriceText : String
+    @State private var currencyPriceText : String = "18789.54"
     @State private var transactionType = "BUY"
     @State private var totalHoldings : Double = 0
     
-    init(cryptoCurrency : CryptoCurrency){
+    /*init(cryptoCurrency : CryptoCurrency){
         self.cryptoCurrency = cryptoCurrency
-        self.currencyPriceText =
-        String(format: "%.2f", cryptoCurrency.currentPrice)
-    }
+       // self.currencyPriceText = String(format: "%.2f", cryptoCurrency.currentPrice)
+    }*/
     var body: some View {
         ZStack{
             ScrollView{
